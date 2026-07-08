@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hava's Projects</title>
+<meta name="description" content="A colorful home for all of Hava's personal projects.">
+<style>
+  :root {
+    --bg: #fffaf3;
+    --ink: #2d2a32;
+    --muted: #6f6a78;
+    --card: #ffffff;
+    --pink: #ff5d8f;
+    --orange: #ff9f1c;
+    --yellow: #ffd23f;
+    --green: #2ec4b6;
+    --blue: #3a86ff;
+    --purple: #8338ec;
+    --red: #ef476f;
+    --teal: #06d6a0;
+    --radius: 22px;
+    --shadow: 0 8px 24px rgba(45, 42, 50, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ---- floating background blobs ---- */
+  .blob {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: 0.35;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .blob-1 { width: 380px; height: 380px; background: var(--pink);   top: -120px; left: -100px; }
+  .blob-2 { width: 320px; height: 320px; background: var(--yellow); top: 30%;  right: -120px; }
+  .blob-3 { width: 300px; height: 300px; background: var(--teal);   bottom: -100px; left: 20%; }
+
+  .wrap { position: relative; z-index: 1; max-width: 1000px; margin: 0 auto; padding: 28px 20px 80px; }
+
+  /* ---- header ---- */
+  header { text-align: center; padding: 24px 0 8px; }
+  .logo {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--pink), var(--orange), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tagline { color: var(--muted); margin-top: 6px; font-size: 1.05rem; }
+
+  /* ---- tabs ---- */
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 28px 0 36px;
+  }
+  nav a {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card);
+    border: 2px solid transparent;
+    padding: 10px 18px;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    white-space: nowrap;
+  }
+  nav a:hover { transform: translateY(-3px) rotate(-1deg); }
+  nav a.active { border-color: var(--ink); transform: translateY(-2px); }
+  nav a .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 8px; }
+
+  /* ---- tab panels ---- */
+  .tab { display: none; animation: pop 0.35s ease; }
+  .tab.show { display: block; }
+  @keyframes pop {
+    from { opacity: 0; transform: translateY(14px) scale(0.99); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 40px 36px;
+    border-top: 8px solid var(--accent, var(--pink));
+  }
+  .hero .emoji { font-size: 3.2rem; display: block; margin-bottom: 10px; }
+  .hero h1 { font-size: clamp(1.6rem, 4vw, 2.3rem); letter-spacing: -0.01em; }
+  .hero .sub { color: var(--muted); font-size: 1.1rem; margin-top: 8px; max-width: 60ch; }
+  .hero p.body { margin-top: 18px; line-height: 1.65; max-width: 68ch; }
+
+  .badge {
+    display: inline-block;
+    margin-top: 18px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #fff;
+    background: var(--accent, var(--pink));
+  }
+  .badge.soon { background: var(--muted); }
+
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 20px; }
+  .chips span {
+    background: var(--bg);
+    border: 2px solid var(--accent, var(--pink));
+    color: var(--ink);
+    padding: 5px 13px;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .cta { margin-top: 26px; }
+  .cta a {
+    display: inline-block;
+    background: var(--accent, var(--pink));
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    padding: 12px 22px;
+    border-radius: 14px;
+    transition: transform 0.15s ease;
+  }
+  .cta a:hover { transform: scale(1.05) rotate(1deg); }
+
+  /* ---- home grid ---- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+    margin-top: 28px;
+  }
+  .grid a.card {
+    text-decoration: none;
+    color: var(--ink);
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    border-top: 6px solid var(--accent);
+    transition: transform 0.15s ease;
+  }
+  .grid a.card:hover { transform: translateY(-5px) rotate(-0.5deg); }
+  .grid .card .emoji { font-size: 2rem; }
+  .grid .card h3 { margin-top: 10px; font-size: 1.15rem; }
+  .grid .card p { color: var(--muted); font-size: 0.92rem; margin-top: 6px; line-height: 1.5; }
+
+  footer { text-align: center; color: var(--muted); margin-top: 60px; font-size: 0.9rem; }
+  footer a { color: var(--purple); font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .hero { padding: 28px 22px; }
+  }
+</style>
+</head>
+<body>
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div class="wrap">
+  <header>
+    <div class="logo">Hava&rsquo;s Project Playground</div>
+    <p class="tagline">One home for everything I&rsquo;m building 🛠️✨</p>
+  </header>
+
+  <nav id="tabs">
+    <a href="#home" data-tab="home"><span class="dot" style="background:var(--pink)"></span>Home</a>
+    <a href="#digital-twin" data-tab="digital-twin"><span class="dot" style="background:var(--teal)"></span>Digital Twin</a>
+    <a href="#expensify" data-tab="expensify"><span class="dot" style="background:var(--green)"></span>Expensify</a>
+    <a href="#factory-app" data-tab="factory-app"><span class="dot" style="background:var(--orange)"></span>Factory App</a>
+    <a href="#games" data-tab="games"><span class="dot" style="background:var(--purple)"></span>Games</a>
+    <a href="#personal-banker" data-tab="personal-banker"><span class="dot" style="background:var(--blue)"></span>Personal Banker</a>
+    <a href="#investment-advisor" data-tab="investment-advisor"><span class="dot" style="background:var(--yellow)"></span>Investment Advisor</a>
+    <a href="#mycook" data-tab="mycook"><span class="dot" style="background:var(--red)"></span>MyCook</a>
+  </nav>
+
+  <!-- HOME -->
+  <section class="tab" id="tab-home" style="--accent: var(--pink)">
+    <div class="hero">
+      <span class="emoji">👋</span>
+      <h1>Hi, I&rsquo;m Hava!</h1>
+      <p class="sub">Welcome to my corner of the internet. Every tab up top is one of my projects — some are already working, some are dreams in progress.</p>
+      <p class="body">I love building useful little apps: tools that track my life, split expenses with friends, manage money, and more. Poke around and see what I&rsquo;ve been making!</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="#digital-twin" style="--accent: var(--teal)"><span class="emoji">🧬</span><h3>Digital Twin</h3><p>A local-first personal activity tracker with automatic collectors and a dashboard.</p></a>
+      <a class="card" href="#expensify" style="--accent: var(--green)"><span class="emoji">💸</span><h3>Expensify</h3><p>Split expenses with friends on trips and see who owes whom.</p></a>
+      <a class="card" href="#factory-app" style="--accent: var(--orange)"><span class="emoji">🏭</span><h3>Factory App</h3><p>An AI factory that builds complete SaaS platforms for service businesses.</p></a>
+      <a class="card" href="#games" style="--accent: var(--purple)"><span class="emoji">🎮</span><h3>Games</h3><p>Fun little games I&rsquo;m building. Coming soon!</p></a>
+      <a class="card" href="#personal-banker" style="--accent: var(--blue)"><span class="emoji">🏦</span><h3>Personal Banker</h3><p>A smart helper for everyday money management. Coming soon!</p></a>
+      <a class="card" href="#investment-advisor" style="--accent: var(--yellow)"><span class="emoji">📈</span><h3>Investment Advisor</h3><p>Insights and guidance for growing investments. Coming soon!</p></a>
+      <a class="card" href="#mycook" style="--accent: var(--red)"><span class="emoji">🍳</span><h3>MyCook</h3><p>Recipes, meal plans, and kitchen inspiration. Coming soon!</p></a>
+    </div>
+  </section>
+
+  <!-- DIGITAL TWIN -->
+  <section class="tab" id="tab-digital-twin" style="--accent: var(--teal)">
+    <div class="hero">
+      <span class="emoji">🧬</span>
+      <h1>Digital Twin</h1>
+      <p class="sub">A local-first personal activity tracker — a digital mirror of my day.</p>
+      <span class="badge">Working project</span>
+      <p class="body">Digital Twin runs collectors on a schedule to automatically gather my activity, and gives me a dashboard to browse it all or quickly add manual entries — journal notes, tasks, household items, investments, and banking notes. Everything stays on my own machine.</p>
+      <div class="chips"><span>FastAPI</span><span>SQLite</span><span>React</span><span>Local-first</span></div>
+    </div>
+  </section>
+
+  <!-- EXPENSIFY -->
+  <section class="tab" id="tab-expensify" style="--accent: var(--green)">
+    <div class="hero">
+      <span class="emoji">💸</span>
+      <h1>Expensify</h1>
+      <p class="sub">Splitting expenses with friends, minus the awkward math.</p>
+      <span class="badge">Working project</span>
+      <p class="body">An expense-splitting app for friend groups and trips: sign up, create groups, invite friends by email, log shared expenses, record settle-up payments, and see simplified &ldquo;who owes whom&rdquo; balances at a glance.</p>
+      <div class="chips"><span>Node.js</span><span>Express</span><span>SQLite</span><span>React</span><span>Vite</span></div>
+    </div>
+  </section>
+
+  <!-- FACTORY APP -->
+  <section class="tab" id="tab-factory-app" style="--accent: var(--orange)">
+    <div class="hero">
+      <span class="emoji">🏭</span>
+      <h1>Factory App</h1>
+      <p class="sub">An AI-powered factory that builds entire software platforms.</p>
+      <span class="badge">Working project</span>
+      <p class="body">Describe a service business — dry cleaning, shoe repair, tailoring — walk through a 4-step wizard, and the factory produces a fully-coded, production-grade SaaS platform: domain vocabulary, sample data, and the right design theme baked in. The factory is the engine; the platforms it builds are the product.</p>
+      <div class="chips"><span>Next.js</span><span>TypeScript</span><span>AI-powered</span><span>SaaS builder</span></div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section class="tab" id="tab-games" style="--accent: var(--purple)">
+    <div class="hero">
+      <span class="emoji">🎮</span>
+      <h1>Games</h1>
+      <p class="sub">Playful experiments and little games.</p>
+      <span class="badge soon">Coming soon</span>
+      <p class="body">This is where my games will live — small, fun things to play in the browser. Watch this space! 🚀</p>
+    </div>
+  </section>
+
+  <!-- PERSONAL BANKER -->
+  <section class="tab" id="tab-personal-banker" style="--accent: var(--blue)">
+    <div class="hero">
+      <span class="emoji">🏦</span>
+      <h1>Personal Banker</h1>
+      <p class="sub">A smart companion for everyday money.</p>
+      <span class="badge soon">Coming soon</span>
+      <p class="body">A personal banking helper to keep track of accounts, spending, and savings goals — like having a tiny banker in your pocket. In the works! 💼</p>
+    </div>
+  </section>
+
+  <!-- INVESTMENT ADVISOR -->
+  <section class="tab" id="tab-investment-advisor" style="--accent: var(--yellow)">
+    <div class="hero">
+      <span class="emoji">📈</span>
+      <h1>Investment Advisor</h1>
+      <p class="sub">Insights to grow investments with confidence.</p>
+      <span class="badge soon">Coming soon</span>
+      <p class="body">A tool for tracking portfolios and getting clear, friendly guidance on investments. Currently brewing! ☕</p>
+    </div>
+  </section>
+
+  <!-- MYCOOK -->
+  <section class="tab" id="tab-mycook" style="--accent: var(--red)">
+    <div class="hero">
+      <span class="emoji">🍳</span>
+      <h1>MyCook</h1>
+      <p class="sub">Recipes, meal plans, and kitchen joy.</p>
+      <span class="badge soon">Coming soon</span>
+      <p class="body">My cooking companion: saved recipes, weekly meal plans, and shopping lists — all in one tasty place. Simmering away! 🍲</p>
+    </div>
+  </section>
+
+  <footer>
+    Made with 💖 by Hava &middot; <a href="https://github.com/vandanahava">GitHub</a>
+  </footer>
+</div>
+
+<script>
+  const tabs = document.querySelectorAll("#tabs a");
+  const panels = document.querySelectorAll(".tab");
+
+  function showTab() {
+    const name = (location.hash || "#home").slice(1);
+    const target = document.getElementById("tab-" + name) ? name : "home";
+    panels.forEach(p => p.classList.toggle("show", p.id === "tab-" + target));
+    tabs.forEach(t => t.classList.toggle("active", t.dataset.tab === target));
+  }
+
+  window.addEventListener("hashchange", showTab);
+  showTab();
+</script>
+</body>
+</html>
