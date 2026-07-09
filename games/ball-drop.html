@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ball Drop! 🎾</title>
-<meta name="description" content="Catch falling balls with your hands — a camera game for kids!">
+<meta name="description" content="Catch falling fruits, eggs, planets and more with your hands — a camera game for every age!">
 <style>
   :root {
     --ink: #2d2a32;
@@ -32,21 +32,26 @@
     top: 0; left: 0; right: 0;
     display: none;
     justify-content: space-between;
-    padding: 14px 18px;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
     pointer-events: none;
     z-index: 5;
+    flex-wrap: wrap;
   }
   .pill {
     background: rgba(28, 26, 34, 0.65);
     border-radius: 999px;
-    padding: 10px 22px;
-    font-size: 1.6rem;
+    padding: 8px 18px;
+    font-size: 1.25rem;
     font-weight: 800;
     letter-spacing: 0.02em;
     backdrop-filter: blur(6px);
+    white-space: nowrap;
   }
   #score { color: var(--yellow); }
-  #timer { color: #fff; }
+  #goal  { color: var(--green); }
+  #level { color: var(--purple); background: rgba(255,255,255,0.85); }
   #timer.hurry { color: var(--pink); animation: throb 0.5s infinite alternate; }
   @keyframes throb { from { transform: scale(1); } to { transform: scale(1.12); } }
 
@@ -58,31 +63,56 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    gap: 18px;
-    padding: 24px;
+    gap: 14px;
+    padding: 20px;
     background: radial-gradient(circle at 30% 20%, #3b2d5e, #1c1a22 70%);
     z-index: 10;
+    overflow-y: auto;
   }
   .screen.hidden { display: none; }
-  .screen h1 { font-size: clamp(2.2rem, 7vw, 4rem); }
-  .screen p { font-size: 1.15rem; max-width: 46ch; line-height: 1.6; opacity: 0.9; }
-  .balls-deco { font-size: 2.6rem; letter-spacing: 8px; }
+  .screen h1 { font-size: clamp(1.9rem, 6vw, 3.4rem); }
+  .screen p { font-size: 1.05rem; max-width: 52ch; line-height: 1.55; opacity: 0.9; }
   .bigbtn {
     font: inherit;
-    font-size: 1.5rem;
+    font-size: 1.4rem;
     font-weight: 800;
     color: #fff;
     background: linear-gradient(135deg, var(--pink), var(--orange));
     border: none;
     border-radius: 999px;
-    padding: 18px 46px;
+    padding: 16px 42px;
     cursor: pointer;
     box-shadow: 0 10px 30px rgba(255, 93, 143, 0.45);
     transition: transform 0.15s ease;
   }
   .bigbtn:hover { transform: scale(1.07) rotate(-1deg); }
-  .home-link { color: var(--yellow); font-weight: 700; text-decoration: none; font-size: 1rem; }
+  .home-link { color: var(--yellow); font-weight: 700; text-decoration: none; font-size: 0.95rem; }
   .home-link:hover { text-decoration: underline; }
+
+  .picker-label { font-size: 0.85rem; font-weight: 800; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.6; margin-top: 6px; }
+  .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(80px, 120px));
+    gap: 8px;
+  }
+  @media (max-width: 560px) { .theme-grid { grid-template-columns: repeat(2, minmax(120px, 1fr)); } }
+  .theme-grid button, .diff-row button {
+    font: inherit;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.08);
+    border: 3px solid transparent;
+    border-radius: 16px;
+    padding: 10px 6px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: transform 0.12s ease;
+  }
+  .theme-grid button .big { display: block; font-size: 1.9rem; margin-bottom: 2px; }
+  .theme-grid button:hover, .diff-row button:hover { transform: scale(1.06); }
+  .theme-grid button.sel, .diff-row button.sel { border-color: var(--yellow); background: rgba(255, 210, 63, 0.18); }
+  .diff-row { display: flex; gap: 8px; }
+  .diff-row button { padding: 10px 18px; font-size: 1rem; border-radius: 999px; }
 
   #countdown-num {
     font-size: clamp(6rem, 25vw, 12rem);
@@ -91,11 +121,31 @@
     text-shadow: 0 10px 40px rgba(0,0,0,0.5);
     animation: throb 0.4s infinite alternate;
   }
-  #countdown.screen { background: transparent; }
+  #countdown.screen, #levelup.screen { background: rgba(28, 26, 34, 0.45); }
 
-  #final-score { font-size: clamp(4rem, 14vw, 7rem); font-weight: 800; color: var(--yellow); }
-  #best-line { font-size: 1.1rem; color: var(--green); font-weight: 700; }
+  #levelup h1 { color: var(--yellow); text-shadow: 0 6px 30px rgba(0,0,0,0.6); }
+  #levelup p  { font-size: 1.3rem; font-weight: 700; text-shadow: 0 2px 12px rgba(0,0,0,0.8); }
+
+  #final-score { font-size: clamp(3.4rem, 12vw, 6rem); font-weight: 800; color: var(--yellow); line-height: 1; }
+  .stat-row { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; }
+  .stat {
+    background: rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 12px 22px;
+    font-weight: 700;
+  }
+  .stat .n { font-size: 1.6rem; color: var(--green); display: block; }
+  #best-line { font-size: 1.05rem; color: var(--green); font-weight: 700; }
   #err { color: var(--pink); font-weight: 700; }
+
+  #flash {
+    position: fixed; inset: 0;
+    background: #ef476f;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 4;
+    transition: opacity 0.4s ease;
+  }
 </style>
 </head>
 <body>
@@ -103,20 +153,28 @@
   <video id="cam" autoplay playsinline muted></video>
   <canvas id="game"></canvas>
 </div>
+<div id="flash"></div>
 
 <div id="hud">
   <div class="pill" id="score">⭐ 0</div>
-  <div class="pill" id="timer">⏱ 60</div>
+  <div class="pill" id="goal">🎯 0/8</div>
+  <div class="pill" id="level">Level 1</div>
+  <div class="pill" id="timer">⏱ 30</div>
 </div>
 
 <!-- START -->
 <div class="screen" id="start">
-  <div class="balls-deco">🔴 🟡 🔵 🟢 🟣</div>
   <h1>Ball Drop!</h1>
-  <p>Balls fall from the sky — <strong>wave your hands</strong> where a ball is to catch it! 🙌<br>
-     Catch as many as you can in <strong>60 seconds</strong>.</p>
-  <p style="font-size:0.95rem; opacity:0.7;">This game uses your camera, but nothing is recorded or sent anywhere — it all stays on this device.</p>
+  <p>Things fall from the sky — <strong>wave your hands</strong> to catch them! 🙌 Reach each level&rsquo;s target to keep climbing. Grab <strong>⭐ for +5</strong>&hellip; but don&rsquo;t touch the <strong>💣 bombs!</strong></p>
+
+  <div class="picker-label">What should fall?</div>
+  <div class="theme-grid" id="themes"></div>
+
+  <div class="picker-label">How brave are you?</div>
+  <div class="diff-row" id="diffs"></div>
+
   <button class="bigbtn" id="play-btn">Let&rsquo;s Play! 🎾</button>
+  <p style="font-size:0.85rem; opacity:0.65;">Uses your camera — nothing is recorded or sent anywhere.</p>
   <p id="err" hidden></p>
   <a class="home-link" href="../index.html#games">← Back to Hava&rsquo;s projects</a>
 </div>
@@ -126,12 +184,21 @@
   <div id="countdown-num">3</div>
 </div>
 
+<!-- LEVEL UP -->
+<div class="screen hidden" id="levelup">
+  <h1 id="levelup-title">Level 2! 🎉</h1>
+  <p id="levelup-note"></p>
+</div>
+
 <!-- GAME OVER -->
 <div class="screen hidden" id="over">
-  <h1>Time&rsquo;s up! 🎉</h1>
-  <p style="margin-bottom:-10px;">You caught</p>
+  <h1 id="over-title">Time&rsquo;s up! 🎉</h1>
   <div id="final-score">0</div>
-  <p style="margin-top:-14px;">balls!</p>
+  <p style="margin-top:-8px;">total points</p>
+  <div class="stat-row">
+    <div class="stat"><span class="n" id="stat-level">1</span>level reached</div>
+    <div class="stat"><span class="n" id="stat-caught">0</span>things caught</div>
+  </div>
   <div id="best-line"></div>
   <button class="bigbtn" id="again-btn">Play Again 🔁</button>
   <a class="home-link" href="../index.html#games">← Back to Hava&rsquo;s projects</a>
@@ -139,20 +206,36 @@
 
 <script>
 (() => {
-  const GAME_SECONDS = 60;
-  const COLORS = ["#ff5d8f", "#ff9f1c", "#ffd23f", "#2ec4b6", "#3a86ff", "#8338ec", "#ef476f", "#06d6a0"];
+  const LEVEL_SECONDS = 30;
+  const CONFETTI = ["#ff5d8f", "#ff9f1c", "#ffd23f", "#2ec4b6", "#3a86ff", "#8338ec"];
+
+  const THEMES = {
+    fruits: { name: "Fruit Frenzy",  icon: "🍓", items: ["🍎","🍌","🍇","🍓","🍊","🍉","🥝","🍍","🍒","🥭"] },
+    veggies:{ name: "Veggie Garden", icon: "🥕", items: ["🥕","🥦","🌽","🍅","🥒","🍆","🥔","🧅","🫑","🍄"] },
+    farm:   { name: "Farm Harvest",  icon: "🥚", items: ["🥚","🌾","🐣","🍯","🥛","🧺","🌻","🍞"] },
+    sweets: { name: "Sweet Treats",  icon: "🍩", items: ["🍩","🍪","🧁","🍭","🍬","🍦","🍫","🍰"] },
+    sports: { name: "Super Sports",  icon: "⚽", items: ["⚽","🏀","🎾","⚾","🏐","🏈","🥎","🎱"] },
+    space:  { name: "Outer Space",   icon: "🪐", items: ["🪐","🌙","☄️","🛸","🌟","👽","🚀","🌈"] },
+    ocean:  { name: "Under the Sea", icon: "🐠", items: ["🐠","🐙","🦀","🐚","🐬","🦞","🐡","🦑"] },
+    mix:    { name: "Crazy Mix",     icon: "🎲", items: [] }, // filled below
+  };
+  THEMES.mix.items = Object.values(THEMES).flatMap(t => t.items);
+
+  const DIFFS = {
+    easy:   { label: "🐣 Easy",   speed: 0.72, spawn: 1.3,  size: 1.25, bombLevel: 5 },
+    normal: { label: "🙂 Normal", speed: 1.0,  spawn: 1.0,  size: 1.0,  bombLevel: 3 },
+    hard:   { label: "🔥 Hard",   speed: 1.3,  spawn: 0.8,  size: 0.88, bombLevel: 2 },
+  };
+  const BAD = ["💣", "⚡"];
+  const STAR = "⭐";
 
   const video = document.getElementById("cam");
   const canvas = document.getElementById("game");
   const ctx = canvas.getContext("2d");
   const hud = document.getElementById("hud");
-  const scoreEl = document.getElementById("score");
-  const timerEl = document.getElementById("timer");
-  const screens = {
-    start: document.getElementById("start"),
-    countdown: document.getElementById("countdown"),
-    over: document.getElementById("over"),
-  };
+  const flash = document.getElementById("flash");
+  const el = id => document.getElementById(id);
+  const screens = { start: el("start"), countdown: el("countdown"), levelup: el("levelup"), over: el("over") };
 
   // low-res canvas for motion detection
   const MW = 120, MH = 90;
@@ -162,25 +245,50 @@
   let prevFrame = null;
   let motionMap = new Uint8Array(MW * MH);
 
-  let state = "start";        // start | countdown | playing | over
-  let balls = [], particles = [], popups = [];
-  let score = 0, timeLeft = GAME_SECONDS;
-  let spawnTimer = 0, elapsed = 0, lastTs = 0;
+  let theme = "fruits", diff = "normal";
+  let state = "start";   // start | countdown | playing | levelup | over
+  let objects = [], particles = [], popups = [];
+  let score = 0, caughtTotal = 0, levelCaught = 0, level = 1, timeLeft = LEVEL_SECONDS;
+  let spawnTimer = 0, lastTs = 0, tickHandle = null;
   let audioCtx = null;
 
-  function resize() {
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-  }
+  const target = lv => 5 + lv * 3;                       // L1: 8, L2: 11, L3: 14 ...
+  const fallSpeed = lv => (canvas.height / 4.4) * DIFFS[diff].speed * (1 + (lv - 1) * 0.16);
+  const spawnEvery = lv => Math.max(0.45, (1.35 - (lv - 1) * 0.09) * DIFFS[diff].spawn);
+  const bombsOn = lv => lv >= DIFFS[diff].bombLevel;
+  const windOn = lv => lv >= 4;
+
+  function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
   window.addEventListener("resize", resize);
   resize();
 
   function show(name) {
     for (const k in screens) screens[k].classList.toggle("hidden", k !== name);
-    if (!name) for (const k in screens) screens[k].classList.add("hidden");
   }
 
-  // ---------- sound (tiny synth pops, nothing loaded) ----------
+  // ---------- pickers ----------
+  const themesEl = el("themes"), diffsEl = el("diffs");
+  for (const [key, t] of Object.entries(THEMES)) {
+    const b = document.createElement("button");
+    b.innerHTML = `<span class="big">${t.icon}</span>${t.name}`;
+    b.onclick = () => { theme = key; sync(); };
+    b.dataset.key = key;
+    themesEl.appendChild(b);
+  }
+  for (const [key, d] of Object.entries(DIFFS)) {
+    const b = document.createElement("button");
+    b.textContent = d.label;
+    b.onclick = () => { diff = key; sync(); };
+    b.dataset.key = key;
+    diffsEl.appendChild(b);
+  }
+  function sync() {
+    for (const b of themesEl.children) b.classList.toggle("sel", b.dataset.key === theme);
+    for (const b of diffsEl.children) b.classList.toggle("sel", b.dataset.key === diff);
+  }
+  sync();
+
+  // ---------- sound (tiny synth, nothing loaded) ----------
   function beep(freq, dur, type = "sine", vol = 0.25) {
     if (!audioCtx) return;
     const o = audioCtx.createOscillator();
@@ -194,8 +302,11 @@
     o.start();
     o.stop(audioCtx.currentTime + dur);
   }
-  const popSound = () => beep(500 + Math.random() * 200, 0.18, "triangle", 0.3);
-  const endSound = () => { beep(660, 0.3); setTimeout(() => beep(880, 0.4), 250); };
+  const popSound   = () => beep(500 + Math.random() * 200, 0.18, "triangle", 0.3);
+  const starSound  = () => { beep(880, 0.12); setTimeout(() => beep(1320, 0.25), 110); };
+  const bombSound  = () => beep(90, 0.4, "sawtooth", 0.35);
+  const fanfare    = () => [523, 659, 784, 1047].forEach((f, i) => setTimeout(() => beep(f, 0.22), i * 130));
+  const failSound  = () => { beep(330, 0.3, "square", 0.2); setTimeout(() => beep(196, 0.5, "square", 0.2), 280); };
 
   // ---------- camera ----------
   async function startCamera() {
@@ -207,12 +318,10 @@
     await video.play();
   }
 
-  // cover-crop source rect so the mirrored video fills the canvas
   function coverRect() {
     const vw = video.videoWidth || 1280, vh = video.videoHeight || 720;
     const scale = Math.max(canvas.width / vw, canvas.height / vh);
-    const sw = canvas.width / scale, sh = canvas.height / scale;
-    return { sx: (vw - sw) / 2, sy: (vh - sh) / 2, sw, sh };
+    return { sx: (vw - canvas.width / scale) / 2, sy: (vh - canvas.height / scale) / 2, sw: canvas.width / scale, sh: canvas.height / scale };
   }
 
   function drawVideo(target, w, h) {
@@ -230,18 +339,18 @@
     const frame = mctx.getImageData(0, 0, MW, MH).data;
     if (prevFrame) {
       for (let i = 0, p = 0; i < frame.length; i += 4, p++) {
-        const diff =
+        const diffv =
           Math.abs(frame[i] - prevFrame[i]) +
           Math.abs(frame[i + 1] - prevFrame[i + 1]) +
           Math.abs(frame[i + 2] - prevFrame[i + 2]);
-        motionMap[p] = diff > 70 ? 1 : 0;
+        motionMap[p] = diffv > 70 ? 1 : 0;
       }
     }
     prevFrame = frame.slice(0);
   }
 
-  // fraction of motion pixels within the ball's circle
   function motionAt(x, y, r) {
+    if (FORCE_MOTION) return 1;
     const mx = Math.round((x / canvas.width) * MW);
     const my = Math.round((y / canvas.height) * MH);
     const mr = Math.max(2, Math.round((r / canvas.width) * MW));
@@ -259,41 +368,71 @@
   }
 
   // ---------- game objects ----------
-  function spawnBall() {
-    const r = Math.max(28, Math.min(canvas.width, canvas.height) * 0.055);
-    balls.push({
+  function spawnObject() {
+    const r = Math.max(26, Math.min(canvas.width, canvas.height) * 0.055) * DIFFS[diff].size;
+    let kind = "good";
+    const roll = Math.random();
+    if (bombsOn(level) && roll < 0.13) kind = "bad";
+    else if (roll > 0.94) kind = "star";
+    const items = THEMES[theme].items;
+    objects.push({
       x: r + Math.random() * (canvas.width - 2 * r),
       y: -r,
       r,
-      vy: (canvas.height / 4.2) * (1 + elapsed / 90),   // speeds up gently
-      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      vy: fallSpeed(level) * (0.85 + Math.random() * 0.3),
+      emoji: kind === "bad" ? BAD[Math.floor(Math.random() * BAD.length)]
+           : kind === "star" ? STAR
+           : items[Math.floor(Math.random() * items.length)],
+      kind,
       wobble: Math.random() * Math.PI * 2,
+      windAmp: windOn(level) ? (30 + Math.random() * 60) * (Math.random() < 0.5 ? -1 : 1) : 0,
       age: 0,
     });
   }
 
-  function burst(x, y, color) {
-    for (let i = 0; i < 14; i++) {
-      const a = (Math.PI * 2 * i) / 14;
+  function burst(x, y, colors, n = 14) {
+    for (let i = 0; i < n; i++) {
+      const a = (Math.PI * 2 * i) / n;
       const sp = 120 + Math.random() * 220;
-      particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 80, life: 0.7, color });
+      particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 80, life: 0.7, color: colors[i % colors.length] });
     }
-    popups.push({ x, y, life: 0.9, text: "+1" });
   }
 
-  function drawBall(b) {
-    const wob = Math.sin(b.wobble + b.age * 6) * b.r * 0.06;
+  function drawObject(o) {
     ctx.save();
-    ctx.translate(b.x + wob, b.y);
-    const grad = ctx.createRadialGradient(-b.r * 0.35, -b.r * 0.35, b.r * 0.1, 0, 0, b.r);
-    grad.addColorStop(0, "#ffffff");
-    grad.addColorStop(0.25, b.color);
-    grad.addColorStop(1, b.color);
-    ctx.fillStyle = grad;
-    ctx.beginPath();
-    ctx.arc(0, 0, b.r, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.translate(o.x, o.y);
+    ctx.rotate(Math.sin(o.wobble + o.age * 3) * 0.22);
+    if (o.kind === "star") { ctx.shadowColor = "#ffd23f"; ctx.shadowBlur = 26; }
+    if (o.kind === "bad")  { ctx.shadowColor = "#ef476f"; ctx.shadowBlur = 22; }
+    ctx.font = o.r * 2 + "px serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    ctx.fillText(o.emoji, 0, 0);
     ctx.restore();
+  }
+
+  function catchObject(o) {
+    if (o.kind === "bad") {
+      score = Math.max(0, score - 3);
+      popups.push({ x: o.x, y: o.y, life: 0.9, text: "💥 -3", color: "#ef476f" });
+      burst(o.x, o.y, ["#ef476f", "#666", "#333"], 18);
+      bombSound();
+      flash.style.opacity = 0.45;
+      setTimeout(() => (flash.style.opacity = 0), 120);
+    } else if (o.kind === "star") {
+      score += 5; caughtTotal++; levelCaught++;
+      popups.push({ x: o.x, y: o.y, life: 0.9, text: "+5", color: "#ffd23f" });
+      burst(o.x, o.y, ["#ffd23f", "#fff", "#ff9f1c"], 20);
+      starSound();
+    } else {
+      score++; caughtTotal++; levelCaught++;
+      popups.push({ x: o.x, y: o.y, life: 0.9, text: "+1", color: "#ffd23f" });
+      burst(o.x, o.y, CONFETTI);
+      popSound();
+    }
+    el("score").textContent = "⭐ " + score;
+    el("goal").textContent = "🎯 " + Math.min(levelCaught, target(level)) + "/" + target(level);
+    if (levelCaught >= target(level) && state === "playing") levelUp();
   }
 
   // ---------- main loop ----------
@@ -307,31 +446,25 @@
 
     if (state !== "playing") { drawFx(dt); return; }
 
-    elapsed += dt;
     updateMotion();
 
-    // spawn: every 1.4s at the start, down to every 0.7s by the end
     spawnTimer -= dt;
-    if (spawnTimer <= 0) {
-      spawnBall();
-      spawnTimer = Math.max(0.7, 1.4 - elapsed / 60);
-    }
+    if (spawnTimer <= 0) { spawnObject(); spawnTimer = spawnEvery(level); }
 
-    for (let i = balls.length - 1; i >= 0; i--) {
-      const b = balls[i];
-      b.age += dt;
-      b.y += b.vy * dt;
-      // catchable once it has fallen into reach (not right at the top edge)
-      if (b.y > canvas.height * 0.15 && motionAt(b.x, b.y, b.r * 1.25) > 0.18) {
-        score++;
-        scoreEl.textContent = "⭐ " + score;
-        burst(b.x, b.y, b.color);
-        popSound();
-        balls.splice(i, 1);
+    for (let i = objects.length - 1; i >= 0; i--) {
+      const o = objects[i];
+      o.age += dt;
+      o.y += o.vy * dt;
+      if (o.windAmp) o.x += Math.sin(o.age * 2.4 + o.wobble) * o.windAmp * dt;
+      o.x = Math.max(o.r, Math.min(canvas.width - o.r, o.x));
+      if (o.y > canvas.height * 0.15 && motionAt(o.x, o.y, o.r * 1.25) > 0.18) {
+        objects.splice(i, 1);
+        catchObject(o);
+        if (state !== "playing") break;   // catch may trigger a level-up, which clears the array
         continue;
       }
-      if (b.y - b.r > canvas.height) balls.splice(i, 1);
-      else drawBall(b);
+      if (o.y - o.r > canvas.height) objects.splice(i, 1);
+      else drawObject(o);
     }
 
     drawFx(dt);
@@ -357,7 +490,7 @@
       p.y -= 60 * dt;
       ctx.globalAlpha = Math.max(0, p.life);
       ctx.font = "800 42px 'Avenir Next', system-ui, sans-serif";
-      ctx.fillStyle = "#ffd23f";
+      ctx.fillStyle = p.color || "#ffd23f";
       ctx.strokeStyle = "rgba(0,0,0,0.4)";
       ctx.lineWidth = 6;
       ctx.textAlign = "center";
@@ -369,68 +502,100 @@
 
   // ---------- flow ----------
   async function begin() {
-    document.getElementById("err").hidden = true;
+    el("err").hidden = true;
     if (!audioCtx) {
       try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
     }
     try {
       if (!video.srcObject) await startCamera();
     } catch (e) {
-      const err = document.getElementById("err");
-      err.textContent = "I couldn't turn on the camera 😢 — please allow camera access and try again.";
-      err.hidden = false;
+      el("err").textContent = "I couldn't turn on the camera 😢 — please allow camera access and try again.";
+      el("err").hidden = false;
+      show("start");
       return;
     }
+    score = 0; caughtTotal = 0; level = 1;
     state = "countdown";
     show("countdown");
-    const num = document.getElementById("countdown-num");
+    const num = el("countdown-num");
     for (const n of ["3", "2", "1", "GO!"]) {
       num.textContent = n;
       beep(n === "GO!" ? 880 : 440, 0.15);
       await new Promise(r => setTimeout(r, n === "GO!" ? 600 : 900));
     }
     show(null);
-    startRound();
+    startLevel();
   }
 
-  function startRound() {
-    balls = []; particles = []; popups = [];
-    score = 0; elapsed = 0; spawnTimer = 0; timeLeft = GAME_SECONDS;
+  function startLevel() {
+    objects = []; particles = []; popups = [];
+    levelCaught = 0; spawnTimer = 0; timeLeft = LEVEL_SECONDS;
     prevFrame = null;
-    scoreEl.textContent = "⭐ 0";
-    timerEl.textContent = "⏱ " + GAME_SECONDS;
-    timerEl.classList.remove("hurry");
+    el("score").textContent = "⭐ " + score;
+    el("goal").textContent = "🎯 0/" + target(level);
+    el("level").textContent = "Level " + level;
+    el("timer").textContent = "⏱ " + LEVEL_SECONDS;
+    el("timer").classList.remove("hurry");
     hud.style.display = "flex";
+    show(null);
     state = "playing";
 
-    const tick = setInterval(() => {
-      if (state !== "playing") { clearInterval(tick); return; }
+    clearInterval(tickHandle);
+    tickHandle = setInterval(() => {
+      if (state !== "playing") { clearInterval(tickHandle); return; }
       timeLeft--;
-      timerEl.textContent = "⏱ " + timeLeft;
-      if (timeLeft <= 10) { timerEl.classList.add("hurry"); beep(330, 0.08, "square", 0.1); }
-      if (timeLeft <= 0) { clearInterval(tick); endRound(); }
+      el("timer").textContent = "⏱ " + timeLeft;
+      if (timeLeft <= 10) { el("timer").classList.add("hurry"); beep(330, 0.08, "square", 0.1); }
+      if (timeLeft <= 0) { clearInterval(tickHandle); gameOver(); }
     }, 1000);
   }
 
-  function endRound() {
+  function levelUp() {
+    clearInterval(tickHandle);
+    state = "levelup";
+    objects = [];
+    level++;
+    fanfare();
+    el("levelup-title").textContent = "Level " + level + "! 🎉";
+    const notes = [];
+    if (level === DIFFS[diff].bombLevel) notes.push("Watch out — bombs are falling now! 💣");
+    if (level === 4) notes.push("Whoosh! The wind makes things zigzag! 🌬️");
+    if (!notes.length) notes.push(["Faster and faster! 🚀", "You're on fire! 🔥", "Amazing catching! 🙌", "Super speedy sky! ☁️"][level % 4]);
+    el("levelup-note").textContent = "Catch " + target(level) + " to keep going. " + notes.join(" ");
+    show("levelup");
+    setTimeout(() => { if (state === "levelup") startLevel(); }, 2600);
+  }
+
+  function gameOver() {
     state = "over";
     hud.style.display = "none";
-    balls = [];
-    document.getElementById("final-score").textContent = score;
-    const best = Math.max(score, Number(localStorage.getItem("balldrop-best") || 0));
-    localStorage.setItem("balldrop-best", best);
-    document.getElementById("best-line").textContent =
-      score >= best && score > 0 ? "🏆 New best score!" : "🏆 Best so far: " + best;
-    endSound();
+    objects = [];
+    failSound();
+    el("over-title").textContent = level > 1 ? "What a run! 🏁" : "Time's up! 🏁";
+    el("final-score").textContent = score;
+    el("stat-level").textContent = level;
+    el("stat-caught").textContent = caughtTotal;
+    const bestScore = Math.max(score, Number(localStorage.getItem("balldrop-best") || 0));
+    const bestLevel = Math.max(level, Number(localStorage.getItem("balldrop-best-level") || 1));
+    localStorage.setItem("balldrop-best", bestScore);
+    localStorage.setItem("balldrop-best-level", bestLevel);
+    el("best-line").textContent =
+      (score >= bestScore && score > 0 ? "🏆 New best score! " : "🏆 Best: " + bestScore + " points") +
+      " · Highest level ever: " + bestLevel;
     show("over");
   }
 
-  document.getElementById("play-btn").addEventListener("click", begin);
-  document.getElementById("again-btn").addEventListener("click", begin);
+  el("play-btn").addEventListener("click", begin);
+  el("again-btn").addEventListener("click", () => { show("start"); state = "start"; });
   requestAnimationFrame(loop);
 
-  // test hook: ?autostart=1 skips the start button (used for automated checks)
-  if (new URLSearchParams(location.search).get("autostart")) begin();
+  // test hooks: ?autostart=1 (+ optional &theme=&diff=) skips the start button;
+  // ?forcemotion=1 makes everything catchable (automated tests only)
+  const qs = new URLSearchParams(location.search);
+  const FORCE_MOTION = qs.get("forcemotion") === "1";
+  if (qs.get("theme") && THEMES[qs.get("theme")]) { theme = qs.get("theme"); sync(); }
+  if (qs.get("diff") && DIFFS[qs.get("diff")]) { diff = qs.get("diff"); sync(); }
+  if (qs.get("autostart")) begin();
 })();
 </script>
 </body>
