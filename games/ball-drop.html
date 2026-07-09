@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ball Drop! 🎾</title>
+<meta name="description" content="Catch falling balls with your hands — a camera game for kids!">
+<style>
+  :root {
+    --ink: #2d2a32;
+    --pink: #ff5d8f;
+    --orange: #ff9f1c;
+    --yellow: #ffd23f;
+    --green: #2ec4b6;
+    --blue: #3a86ff;
+    --purple: #8338ec;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: #1c1a22;
+    color: #fff;
+  }
+  #stage { position: fixed; inset: 0; }
+  #game { width: 100%; height: 100%; display: block; }
+  video { display: none; }
+
+  /* ---- HUD ---- */
+  #hud {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    display: none;
+    justify-content: space-between;
+    padding: 14px 18px;
+    pointer-events: none;
+    z-index: 5;
+  }
+  .pill {
+    background: rgba(28, 26, 34, 0.65);
+    border-radius: 999px;
+    padding: 10px 22px;
+    font-size: 1.6rem;
+    font-weight: 800;
+    letter-spacing: 0.02em;
+    backdrop-filter: blur(6px);
+  }
+  #score { color: var(--yellow); }
+  #timer { color: #fff; }
+  #timer.hurry { color: var(--pink); animation: throb 0.5s infinite alternate; }
+  @keyframes throb { from { transform: scale(1); } to { transform: scale(1.12); } }
+
+  /* ---- overlay screens ---- */
+  .screen {
+    position: fixed; inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 18px;
+    padding: 24px;
+    background: radial-gradient(circle at 30% 20%, #3b2d5e, #1c1a22 70%);
+    z-index: 10;
+  }
+  .screen.hidden { display: none; }
+  .screen h1 { font-size: clamp(2.2rem, 7vw, 4rem); }
+  .screen p { font-size: 1.15rem; max-width: 46ch; line-height: 1.6; opacity: 0.9; }
+  .balls-deco { font-size: 2.6rem; letter-spacing: 8px; }
+  .bigbtn {
+    font: inherit;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--pink), var(--orange));
+    border: none;
+    border-radius: 999px;
+    padding: 18px 46px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(255, 93, 143, 0.45);
+    transition: transform 0.15s ease;
+  }
+  .bigbtn:hover { transform: scale(1.07) rotate(-1deg); }
+  .home-link { color: var(--yellow); font-weight: 700; text-decoration: none; font-size: 1rem; }
+  .home-link:hover { text-decoration: underline; }
+
+  #countdown-num {
+    font-size: clamp(6rem, 25vw, 12rem);
+    font-weight: 800;
+    color: var(--yellow);
+    text-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    animation: throb 0.4s infinite alternate;
+  }
+  #countdown.screen { background: transparent; }
+
+  #final-score { font-size: clamp(4rem, 14vw, 7rem); font-weight: 800; color: var(--yellow); }
+  #best-line { font-size: 1.1rem; color: var(--green); font-weight: 700; }
+  #err { color: var(--pink); font-weight: 700; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <video id="cam" autoplay playsinline muted></video>
+  <canvas id="game"></canvas>
+</div>
+
+<div id="hud">
+  <div class="pill" id="score">⭐ 0</div>
+  <div class="pill" id="timer">⏱ 60</div>
+</div>
+
+<!-- START -->
+<div class="screen" id="start">
+  <div class="balls-deco">🔴 🟡 🔵 🟢 🟣</div>
+  <h1>Ball Drop!</h1>
+  <p>Balls fall from the sky — <strong>wave your hands</strong> where a ball is to catch it! 🙌<br>
+     Catch as many as you can in <strong>60 seconds</strong>.</p>
+  <p style="font-size:0.95rem; opacity:0.7;">This game uses your camera, but nothing is recorded or sent anywhere — it all stays on this device.</p>
+  <button class="bigbtn" id="play-btn">Let&rsquo;s Play! 🎾</button>
+  <p id="err" hidden></p>
+  <a class="home-link" href="../index.html#games">← Back to Hava&rsquo;s projects</a>
+</div>
+
+<!-- COUNTDOWN -->
+<div class="screen hidden" id="countdown">
+  <div id="countdown-num">3</div>
+</div>
+
+<!-- GAME OVER -->
+<div class="screen hidden" id="over">
+  <h1>Time&rsquo;s up! 🎉</h1>
+  <p style="margin-bottom:-10px;">You caught</p>
+  <div id="final-score">0</div>
+  <p style="margin-top:-14px;">balls!</p>
+  <div id="best-line"></div>
+  <button class="bigbtn" id="again-btn">Play Again 🔁</button>
+  <a class="home-link" href="../index.html#games">← Back to Hava&rsquo;s projects</a>
+</div>
+
+<script>
+(() => {
+  const GAME_SECONDS = 60;
+  const COLORS = ["#ff5d8f", "#ff9f1c", "#ffd23f", "#2ec4b6", "#3a86ff", "#8338ec", "#ef476f", "#06d6a0"];
+
+  const video = document.getElementById("cam");
+  const canvas = document.getElementById("game");
+  const ctx = canvas.getContext("2d");
+  const hud = document.getElementById("hud");
+  const scoreEl = document.getElementById("score");
+  const timerEl = document.getElementById("timer");
+  const screens = {
+    start: document.getElementById("start"),
+    countdown: document.getElementById("countdown"),
+    over: document.getElementById("over"),
+  };
+
+  // low-res canvas for motion detection
+  const MW = 120, MH = 90;
+  const motionCanvas = document.createElement("canvas");
+  motionCanvas.width = MW; motionCanvas.height = MH;
+  const mctx = motionCanvas.getContext("2d", { willReadFrequently: true });
+  let prevFrame = null;
+  let motionMap = new Uint8Array(MW * MH);
+
+  let state = "start";        // start | countdown | playing | over
+  let balls = [], particles = [], popups = [];
+  let score = 0, timeLeft = GAME_SECONDS;
+  let spawnTimer = 0, elapsed = 0, lastTs = 0;
+  let audioCtx = null;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  window.addEventListener("resize", resize);
+  resize();
+
+  function show(name) {
+    for (const k in screens) screens[k].classList.toggle("hidden", k !== name);
+    if (!name) for (const k in screens) screens[k].classList.add("hidden");
+  }
+
+  // ---------- sound (tiny synth pops, nothing loaded) ----------
+  function beep(freq, dur, type = "sine", vol = 0.25) {
+    if (!audioCtx) return;
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = type;
+    o.frequency.setValueAtTime(freq, audioCtx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(freq * 1.8, audioCtx.currentTime + dur);
+    g.gain.setValueAtTime(vol, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + dur);
+    o.connect(g).connect(audioCtx.destination);
+    o.start();
+    o.stop(audioCtx.currentTime + dur);
+  }
+  const popSound = () => beep(500 + Math.random() * 200, 0.18, "triangle", 0.3);
+  const endSound = () => { beep(660, 0.3); setTimeout(() => beep(880, 0.4), 250); };
+
+  // ---------- camera ----------
+  async function startCamera() {
+    const stream = await navigator.mediaDevices.getUserMedia({
+      video: { facingMode: "user", width: { ideal: 1280 }, height: { ideal: 720 } },
+      audio: false,
+    });
+    video.srcObject = stream;
+    await video.play();
+  }
+
+  // cover-crop source rect so the mirrored video fills the canvas
+  function coverRect() {
+    const vw = video.videoWidth || 1280, vh = video.videoHeight || 720;
+    const scale = Math.max(canvas.width / vw, canvas.height / vh);
+    const sw = canvas.width / scale, sh = canvas.height / scale;
+    return { sx: (vw - sw) / 2, sy: (vh - sh) / 2, sw, sh };
+  }
+
+  function drawVideo(target, w, h) {
+    const { sx, sy, sw, sh } = coverRect();
+    target.save();
+    target.translate(w, 0);
+    target.scale(-1, 1);
+    target.drawImage(video, sx, sy, sw, sh, 0, 0, w, h);
+    target.restore();
+  }
+
+  function updateMotion() {
+    if (video.readyState < 2) return;
+    drawVideo(mctx, MW, MH);
+    const frame = mctx.getImageData(0, 0, MW, MH).data;
+    if (prevFrame) {
+      for (let i = 0, p = 0; i < frame.length; i += 4, p++) {
+        const diff =
+          Math.abs(frame[i] - prevFrame[i]) +
+          Math.abs(frame[i + 1] - prevFrame[i + 1]) +
+          Math.abs(frame[i + 2] - prevFrame[i + 2]);
+        motionMap[p] = diff > 70 ? 1 : 0;
+      }
+    }
+    prevFrame = frame.slice(0);
+  }
+
+  // fraction of motion pixels within the ball's circle
+  function motionAt(x, y, r) {
+    const mx = Math.round((x / canvas.width) * MW);
+    const my = Math.round((y / canvas.height) * MH);
+    const mr = Math.max(2, Math.round((r / canvas.width) * MW));
+    let hits = 0, total = 0;
+    for (let dy = -mr; dy <= mr; dy++) {
+      for (let dx = -mr; dx <= mr; dx++) {
+        if (dx * dx + dy * dy > mr * mr) continue;
+        const px = mx + dx, py = my + dy;
+        if (px < 0 || px >= MW || py < 0 || py >= MH) continue;
+        total++;
+        hits += motionMap[py * MW + px];
+      }
+    }
+    return total ? hits / total : 0;
+  }
+
+  // ---------- game objects ----------
+  function spawnBall() {
+    const r = Math.max(28, Math.min(canvas.width, canvas.height) * 0.055);
+    balls.push({
+      x: r + Math.random() * (canvas.width - 2 * r),
+      y: -r,
+      r,
+      vy: (canvas.height / 4.2) * (1 + elapsed / 90),   // speeds up gently
+      color: COLORS[Math.floor(Math.random() * COLORS.length)],
+      wobble: Math.random() * Math.PI * 2,
+      age: 0,
+    });
+  }
+
+  function burst(x, y, color) {
+    for (let i = 0; i < 14; i++) {
+      const a = (Math.PI * 2 * i) / 14;
+      const sp = 120 + Math.random() * 220;
+      particles.push({ x, y, vx: Math.cos(a) * sp, vy: Math.sin(a) * sp - 80, life: 0.7, color });
+    }
+    popups.push({ x, y, life: 0.9, text: "+1" });
+  }
+
+  function drawBall(b) {
+    const wob = Math.sin(b.wobble + b.age * 6) * b.r * 0.06;
+    ctx.save();
+    ctx.translate(b.x + wob, b.y);
+    const grad = ctx.createRadialGradient(-b.r * 0.35, -b.r * 0.35, b.r * 0.1, 0, 0, b.r);
+    grad.addColorStop(0, "#ffffff");
+    grad.addColorStop(0.25, b.color);
+    grad.addColorStop(1, b.color);
+    ctx.fillStyle = grad;
+    ctx.beginPath();
+    ctx.arc(0, 0, b.r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  // ---------- main loop ----------
+  function loop(ts) {
+    requestAnimationFrame(loop);
+    const dt = Math.min(0.05, (ts - lastTs) / 1000 || 0.016);
+    lastTs = ts;
+
+    if (video.readyState >= 2) drawVideo(ctx, canvas.width, canvas.height);
+    else { ctx.fillStyle = "#1c1a22"; ctx.fillRect(0, 0, canvas.width, canvas.height); }
+
+    if (state !== "playing") { drawFx(dt); return; }
+
+    elapsed += dt;
+    updateMotion();
+
+    // spawn: every 1.4s at the start, down to every 0.7s by the end
+    spawnTimer -= dt;
+    if (spawnTimer <= 0) {
+      spawnBall();
+      spawnTimer = Math.max(0.7, 1.4 - elapsed / 60);
+    }
+
+    for (let i = balls.length - 1; i >= 0; i--) {
+      const b = balls[i];
+      b.age += dt;
+      b.y += b.vy * dt;
+      // catchable once it has fallen into reach (not right at the top edge)
+      if (b.y > canvas.height * 0.15 && motionAt(b.x, b.y, b.r * 1.25) > 0.18) {
+        score++;
+        scoreEl.textContent = "⭐ " + score;
+        burst(b.x, b.y, b.color);
+        popSound();
+        balls.splice(i, 1);
+        continue;
+      }
+      if (b.y - b.r > canvas.height) balls.splice(i, 1);
+      else drawBall(b);
+    }
+
+    drawFx(dt);
+  }
+
+  function drawFx(dt) {
+    for (let i = particles.length - 1; i >= 0; i--) {
+      const p = particles[i];
+      p.life -= dt;
+      if (p.life <= 0) { particles.splice(i, 1); continue; }
+      p.x += p.vx * dt; p.y += p.vy * dt; p.vy += 600 * dt;
+      ctx.globalAlpha = Math.max(0, p.life / 0.7);
+      ctx.fillStyle = p.color;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, 6, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+    for (let i = popups.length - 1; i >= 0; i--) {
+      const p = popups[i];
+      p.life -= dt;
+      if (p.life <= 0) { popups.splice(i, 1); continue; }
+      p.y -= 60 * dt;
+      ctx.globalAlpha = Math.max(0, p.life);
+      ctx.font = "800 42px 'Avenir Next', system-ui, sans-serif";
+      ctx.fillStyle = "#ffd23f";
+      ctx.strokeStyle = "rgba(0,0,0,0.4)";
+      ctx.lineWidth = 6;
+      ctx.textAlign = "center";
+      ctx.strokeText(p.text, p.x, p.y);
+      ctx.fillText(p.text, p.x, p.y);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  // ---------- flow ----------
+  async function begin() {
+    document.getElementById("err").hidden = true;
+    if (!audioCtx) {
+      try { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) {}
+    }
+    try {
+      if (!video.srcObject) await startCamera();
+    } catch (e) {
+      const err = document.getElementById("err");
+      err.textContent = "I couldn't turn on the camera 😢 — please allow camera access and try again.";
+      err.hidden = false;
+      return;
+    }
+    state = "countdown";
+    show("countdown");
+    const num = document.getElementById("countdown-num");
+    for (const n of ["3", "2", "1", "GO!"]) {
+      num.textContent = n;
+      beep(n === "GO!" ? 880 : 440, 0.15);
+      await new Promise(r => setTimeout(r, n === "GO!" ? 600 : 900));
+    }
+    show(null);
+    startRound();
+  }
+
+  function startRound() {
+    balls = []; particles = []; popups = [];
+    score = 0; elapsed = 0; spawnTimer = 0; timeLeft = GAME_SECONDS;
+    prevFrame = null;
+    scoreEl.textContent = "⭐ 0";
+    timerEl.textContent = "⏱ " + GAME_SECONDS;
+    timerEl.classList.remove("hurry");
+    hud.style.display = "flex";
+    state = "playing";
+
+    const tick = setInterval(() => {
+      if (state !== "playing") { clearInterval(tick); return; }
+      timeLeft--;
+      timerEl.textContent = "⏱ " + timeLeft;
+      if (timeLeft <= 10) { timerEl.classList.add("hurry"); beep(330, 0.08, "square", 0.1); }
+      if (timeLeft <= 0) { clearInterval(tick); endRound(); }
+    }, 1000);
+  }
+
+  function endRound() {
+    state = "over";
+    hud.style.display = "none";
+    balls = [];
+    document.getElementById("final-score").textContent = score;
+    const best = Math.max(score, Number(localStorage.getItem("balldrop-best") || 0));
+    localStorage.setItem("balldrop-best", best);
+    document.getElementById("best-line").textContent =
+      score >= best && score > 0 ? "🏆 New best score!" : "🏆 Best so far: " + best;
+    endSound();
+    show("over");
+  }
+
+  document.getElementById("play-btn").addEventListener("click", begin);
+  document.getElementById("again-btn").addEventListener("click", begin);
+  requestAnimationFrame(loop);
+
+  // test hook: ?autostart=1 skips the start button (used for automated checks)
+  if (new URLSearchParams(location.search).get("autostart")) begin();
+})();
+</script>
+</body>
+</html>
