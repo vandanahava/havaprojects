@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LinkedIn Post Studio ✍️</title>
+<meta name="description" content="Generate research-backed LinkedIn posts on finance transformation, AI, and SAP — with sources.">
+<style>
+  :root {
+    --bg: #fffaf3;
+    --ink: #2d2a32;
+    --muted: #6f6a78;
+    --card: #ffffff;
+    --pink: #ff5d8f;
+    --orange: #ff9f1c;
+    --yellow: #ffd23f;
+    --green: #2ec4b6;
+    --blue: #3a86ff;
+    --purple: #8338ec;
+    --linkedin: #0a66c2;
+    --radius: 22px;
+    --shadow: 0 8px 24px rgba(45, 42, 50, 0.10);
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Avenir Next", "Segoe UI", system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 28px 20px 80px; }
+  header { text-align: center; padding: 12px 0 24px; }
+  .logo {
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    background: linear-gradient(90deg, var(--linkedin), var(--purple));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .tagline { color: var(--muted); margin-top: 6px; }
+  .home-link { color: var(--purple); font-weight: 600; text-decoration: none; font-size: 0.9rem; }
+
+  .card {
+    background: var(--card);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 26px;
+    margin-top: 20px;
+    border-top: 6px solid var(--linkedin);
+  }
+  .card h2 { font-size: 1.2rem; margin-bottom: 6px; }
+  .card p.hint { color: var(--muted); font-size: 0.92rem; line-height: 1.5; }
+
+  .pillars { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+  .pillars button {
+    font: inherit;
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--ink);
+    background: var(--bg);
+    border: 3px solid transparent;
+    border-radius: 999px;
+    padding: 10px 18px;
+    cursor: pointer;
+    transition: transform 0.12s ease;
+  }
+  .pillars button:hover { transform: translateY(-2px); }
+  .pillars button.sel { border-color: var(--linkedin); background: #eaf2fc; }
+
+  input[type="text"], input[type="password"], textarea {
+    font: inherit;
+    width: 100%;
+    border: 2px solid #e5e0d8;
+    border-radius: 14px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    background: #fffdf9;
+    color: var(--ink);
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--linkedin); }
+
+  .btn {
+    font: inherit;
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, var(--linkedin), var(--purple));
+    border: none;
+    border-radius: 999px;
+    padding: 14px 34px;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: transform 0.15s ease;
+  }
+  .btn:hover { transform: scale(1.04); }
+  .btn:disabled { opacity: 0.5; cursor: wait; transform: none; }
+  .btn.small { font-size: 0.85rem; padding: 8px 18px; margin: 0; }
+  .btn.ghost { background: none; color: var(--linkedin); border: 2px solid var(--linkedin); }
+
+  #status { margin-top: 16px; font-weight: 700; color: var(--purple); }
+  #status .spin { display: inline-block; animation: spin 1s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #error { margin-top: 14px; color: var(--pink); font-weight: 700; }
+
+  .post-card { border-top-color: var(--green); }
+  .post-card textarea { min-height: 260px; line-height: 1.55; white-space: pre-wrap; }
+  .post-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 10px; }
+  .charcount { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+  .charcount.long { color: var(--orange); }
+  .actions { display: flex; gap: 10px; }
+
+  .keyrow { display: flex; gap: 10px; align-items: center; margin-top: 12px; }
+  .keyrow input { margin-top: 0; flex: 1; }
+  #key-status { font-size: 0.85rem; color: var(--green); font-weight: 700; margin-top: 8px; }
+  footer { text-align: center; color: var(--muted); margin-top: 50px; font-size: 0.9rem; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="logo">LinkedIn Post Studio ✍️</div>
+    <p class="tagline">Research-backed posts on finance, AI &amp; SAP — every claim sourced.</p>
+    <p style="margin-top:8px;"><a class="home-link" href="../index.html">← Back to Hava&rsquo;s projects</a></p>
+  </header>
+
+  <!-- API KEY SETUP -->
+  <section class="card" id="key-card">
+    <h2>🔑 One-time setup</h2>
+    <p class="hint">This studio uses the Claude API to research and write. Paste your Anthropic API key
+      (get one at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>).
+      The key is stored <strong>only in this browser</strong> — it never touches the website's code or any server of ours.</p>
+    <div class="keyrow">
+      <input type="password" id="key-input" placeholder="sk-ant-...">
+      <button class="btn small" id="key-save">Save</button>
+    </div>
+    <p id="key-status" hidden></p>
+  </section>
+
+  <!-- COMPOSER -->
+  <section class="card" id="composer" hidden>
+    <h2>🎯 What should today's post be about?</h2>
+    <div class="pillars" id="pillars">
+      <button data-pillar="finance">💰 Finance Transformation</button>
+      <button data-pillar="ai">🤖 Latest in AI</button>
+      <button data-pillar="sap">🧩 SAP Products</button>
+      <button data-pillar="knowledge">📚 Knowledge Topic</button>
+    </div>
+    <input type="text" id="angle" placeholder="Optional: a specific angle, news item, or topic (e.g. 'Joule agents in S/4HANA close process')">
+    <button class="btn" id="generate">Research &amp; Write ✨</button>
+    <button class="btn small ghost" id="key-change" style="margin-left:10px;">Change API key</button>
+    <p id="status" hidden></p>
+    <p id="error" hidden></p>
+  </section>
+
+  <!-- RESULTS -->
+  <div id="results"></div>
+
+  <footer>Drafts only — you review, then post on LinkedIn yourself. Nothing is posted automatically.</footer>
+</div>
+
+<script>
+(() => {
+  const KEY_STORAGE = "anthropic-api-key";
+  const API_URL = "https://api.anthropic.com/v1/messages";
+  const MODEL = "claude-opus-4-8";
+
+  const PILLARS = {
+    finance: {
+      label: "Finance Transformation",
+      brief: "finance transformation: AI in the finance function, autonomous close, CFO tech agenda, shared services evolution. Prefer sources like McKinsey, Deloitte, Gartner, CFO Dive, Harvard Business Review.",
+    },
+    ai: {
+      label: "Latest in AI",
+      brief: "the latest AI developments relevant to business professionals: new model releases, enterprise AI adoption, agentic AI, practical use cases. Prefer primary sources (Anthropic, OpenAI, Google) plus credible outlets and analyses in the style of Allie K. Miller and Ethan Mollick.",
+    },
+    sap: {
+      label: "SAP Products",
+      brief: "the latest on SAP products: S/4HANA, Joule AI, Business Technology Platform, SuccessFactors, Datasphere, recent releases and roadmap news. Prefer SAP News Center, SAP Community, and analyst coverage.",
+    },
+    knowledge: {
+      label: "Knowledge Topic",
+      brief: "an evergreen professional knowledge topic worth teaching an audience of finance and tech professionals — explain one concept brilliantly (e.g. how ERP clean core works, what agentic AI means for controls, zero-based budgeting).",
+    },
+  };
+
+  const SYSTEM_PROMPT = `You are a ghostwriter for Hava, a technology and finance professional who posts on LinkedIn.
+
+Voice: "influencer energy + sources". That means:
+- A sharp, specific hook in the first line (this shows before "see more" — make it irresistible, under 200 characters).
+- Short, scannable lines. One idea per line. Generous whitespace.
+- Numbered lists or arrows for structure. At most 2-3 emoji total.
+- Confident, conversational, practical — "here's what this means for you".
+- A closing line that invites conversation (a question or a take).
+- 3-5 relevant hashtags at the very end.
+- CRITICAL: every factual claim must be backed by your web research. End each post with a "Sources:" section listing 2-3 titles with their full URLs. Never invent a statistic, quote, or URL.
+- Total length per post: 900-1800 characters (LinkedIn limit is 3000).
+
+Process: first use web search to find what is genuinely new and interesting (prefer the last 2 weeks unless the topic is evergreen). Then write TWO alternative posts on the strongest finding — different hooks and structures, same underlying research.
+
+Output format — EXACTLY this, nothing else before, between, or after:
+===POST 1===
+(full post text including Sources and hashtags)
+===POST 2===
+(full post text including Sources and hashtags)`;
+
+  const el = id => document.getElementById(id);
+  let pillar = "ai";
+
+  // ---------- key management ----------
+  function getKey() { return localStorage.getItem(KEY_STORAGE) || ""; }
+  function refreshUI() {
+    const hasKey = !!getKey();
+    el("key-card").hidden = hasKey;
+    el("composer").hidden = !hasKey;
+  }
+  el("key-save").addEventListener("click", () => {
+    const k = el("key-input").value.trim();
+    if (!k.startsWith("sk-ant-")) {
+      el("key-status").textContent = "That doesn't look like an Anthropic key (should start with sk-ant-).";
+      el("key-status").style.color = "var(--pink)";
+      el("key-status").hidden = false;
+      return;
+    }
+    localStorage.setItem(KEY_STORAGE, k);
+    refreshUI();
+  });
+  el("key-change").addEventListener("click", () => {
+    localStorage.removeItem(KEY_STORAGE);
+    refreshUI();
+  });
+
+  // ---------- pillar picker ----------
+  const pillarBtns = el("pillars").querySelectorAll("button");
+  pillarBtns.forEach(b => b.addEventListener("click", () => {
+    pillar = b.dataset.pillar;
+    pillarBtns.forEach(x => x.classList.toggle("sel", x === b));
+  }));
+  pillarBtns[1].classList.add("sel");
+
+  // ---------- generation ----------
+  async function callClaude(messages) {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+        "x-api-key": getKey(),
+        "anthropic-version": "2023-06-01",
+        "anthropic-dangerous-direct-browser-access": "true",
+      },
+      body: JSON.stringify({
+        model: MODEL,
+        max_tokens: 16000,
+        thinking: { type: "adaptive" },
+        system: SYSTEM_PROMPT,
+        tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 6 }],
+        messages,
+      }),
+    });
+    if (!res.ok) {
+      const body = await res.json().catch(() => ({}));
+      const msg = body?.error?.message || res.statusText;
+      if (res.status === 401) throw new Error("Your API key was rejected — click 'Change API key' and re-enter it.");
+      if (res.status === 429) throw new Error("Rate limited by the API — wait a minute and try again.");
+      throw new Error("API error (" + res.status + "): " + msg);
+    }
+    return res.json();
+  }
+
+  async function generate() {
+    const btn = el("generate");
+    const status = el("status");
+    const error = el("error");
+    error.hidden = true;
+    el("results").innerHTML = "";
+    btn.disabled = true;
+    status.hidden = false;
+    status.innerHTML = '<span class="spin">🔎</span> Researching the latest on ' + PILLARS[pillar].label + "… (30-90 seconds)";
+
+    const angle = el("angle").value.trim();
+    const today = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+    const userPrompt =
+      "Today is " + today + ". Research and write two LinkedIn post options about " + PILLARS[pillar].brief +
+      (angle ? ("\n\nSpecific angle requested: " + angle) : "");
+
+    try {
+      let messages = [{ role: "user", content: userPrompt }];
+      let response = await callClaude(messages);
+
+      // the server-side search loop can pause; resume by re-sending with the assistant turn appended
+      let continuations = 0;
+      while (response.stop_reason === "pause_turn" && continuations < 4) {
+        continuations++;
+        status.innerHTML = '<span class="spin">🔎</span> Still researching… (round ' + (continuations + 1) + ")";
+        messages = [...messages, { role: "assistant", content: response.content }];
+        response = await callClaude(messages);
+      }
+
+      if (response.stop_reason === "refusal") {
+        throw new Error("The model declined this topic. Try a different angle.");
+      }
+
+      const text = response.content
+        .filter(b => b.type === "text")
+        .map(b => b.text)
+        .join("\n");
+      const posts = text
+        .split(/===POST \d+===/)
+        .map(s => s.trim())
+        .filter(Boolean);
+      if (!posts.length) throw new Error("No posts came back — try again.");
+
+      renderPosts(posts);
+      status.hidden = true;
+    } catch (e) {
+      status.hidden = true;
+      error.textContent = "😕 " + e.message;
+      error.hidden = false;
+    } finally {
+      btn.disabled = false;
+    }
+  }
+  el("generate").addEventListener("click", generate);
+
+  // ---------- results ----------
+  function renderPosts(posts) {
+    const container = el("results");
+    posts.forEach((p, i) => {
+      const card = document.createElement("section");
+      card.className = "card post-card";
+      card.innerHTML = `
+        <h2>Option ${i + 1}</h2>
+        <textarea spellcheck="false"></textarea>
+        <div class="post-meta">
+          <span class="charcount"></span>
+          <div class="actions">
+            <button class="btn small ghost copy-btn">📋 Copy</button>
+            <button class="btn small open-btn">Copy &amp; open LinkedIn →</button>
+          </div>
+        </div>`;
+      const ta = card.querySelector("textarea");
+      const count = card.querySelector(".charcount");
+      ta.value = p;
+      const updateCount = () => {
+        const n = ta.value.length;
+        count.textContent = n + " / 3000 characters" + (n > 3000 ? " — too long for LinkedIn!" : "");
+        count.classList.toggle("long", n > 3000);
+        ta.style.height = "auto";
+        ta.style.height = ta.scrollHeight + 4 + "px";
+      };
+      ta.addEventListener("input", updateCount);
+
+      const copy = async () => {
+        await navigator.clipboard.writeText(ta.value);
+        const b = card.querySelector(".copy-btn");
+        b.textContent = "✅ Copied!";
+        setTimeout(() => (b.textContent = "📋 Copy"), 1600);
+      };
+      card.querySelector(".copy-btn").addEventListener("click", copy);
+      card.querySelector(".open-btn").addEventListener("click", async () => {
+        await copy();
+        window.open("https://www.linkedin.com/feed/", "_blank", "noopener");
+      });
+
+      container.appendChild(card);
+      updateCount();
+    });
+    container.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+
+  refreshUI();
+
+  // test hook: ?testkey=1 seeds a fake key so automated tests can reach the composer
+  if (new URLSearchParams(location.search).get("testkey")) {
+    localStorage.setItem(KEY_STORAGE, "sk-ant-test");
+    refreshUI();
+  }
+})();
+</script>
+</body>
+</html>

@@ -19,6 +19,7 @@
     --purple: #8338ec;
     --red: #ef476f;
     --teal: #06d6a0;
+    --indigo: #5e60ce;
     --radius: 22px;
     --shadow: 0 8px 24px rgba(45, 42, 50, 0.10);
   }
@@ -150,7 +151,8 @@
     gap: 18px;
     margin-top: 28px;
   }
-  .grid a.card {
+  .grid .card {
+    display: block;
     text-decoration: none;
     color: var(--ink);
     background: var(--card);
@@ -164,6 +166,13 @@
   .grid .card .emoji { font-size: 2rem; }
   .grid .card h3 { margin-top: 10px; font-size: 1.15rem; }
   .grid .card p { color: var(--muted); font-size: 0.92rem; margin-top: 6px; line-height: 1.5; }
+
+  h2.cat {
+    margin: 38px 4px 0;
+    font-size: 1.35rem;
+    letter-spacing: -0.01em;
+  }
+  h2.cat + p.catsub { color: var(--muted); margin: 4px 4px 0; font-size: 0.95rem; }
 
   footer { text-align: center; color: var(--muted); margin-top: 60px; font-size: 0.9rem; }
   footer a { color: var(--purple); font-weight: 600; }
@@ -186,10 +195,12 @@
 
   <nav id="tabs">
     <a href="#home" data-tab="home"><span class="dot" style="background:var(--pink)"></span>Home</a>
+    <a href="#ai-hub" data-tab="ai-hub"><span class="dot" style="background:var(--indigo)"></span>AI Hub</a>
     <a href="#digital-twin" data-tab="digital-twin"><span class="dot" style="background:var(--teal)"></span>Digital Twin</a>
     <a href="#expensify" data-tab="expensify"><span class="dot" style="background:var(--green)"></span>Expensify</a>
     <a href="#factory-app" data-tab="factory-app"><span class="dot" style="background:var(--orange)"></span>Factory App</a>
     <a href="#games" data-tab="games"><span class="dot" style="background:var(--purple)"></span>Games</a>
+    <a href="#post-studio" data-tab="post-studio"><span class="dot" style="background:#0a66c2"></span>Post Studio</a>
     <a href="#personal-banker" data-tab="personal-banker"><span class="dot" style="background:var(--blue)"></span>Personal Banker</a>
     <a href="#investment-advisor" data-tab="investment-advisor"><span class="dot" style="background:var(--yellow)"></span>Investment Advisor</a>
     <a href="#mycook" data-tab="mycook"><span class="dot" style="background:var(--red)"></span>MyCook</a>
@@ -204,13 +215,96 @@
       <p class="body">I love building useful little apps: tools that track my life, split expenses with friends, manage money, and more. Poke around and see what I&rsquo;ve been making!</p>
     </div>
     <div class="grid">
+      <a class="card" href="#ai-hub" style="--accent: var(--indigo)"><span class="emoji">🤖</span><h3>AI Hub</h3><p>Free AI tools, courses, and guides — curated for everyone, from kids to grown-ups.</p></a>
       <a class="card" href="#digital-twin" style="--accent: var(--teal)"><span class="emoji">🧬</span><h3>Digital Twin</h3><p>A local-first personal activity tracker with automatic collectors and a dashboard.</p></a>
       <a class="card" href="#expensify" style="--accent: var(--green)"><span class="emoji">💸</span><h3>Expensify</h3><p>Split expenses with friends on trips and see who owes whom.</p></a>
       <a class="card" href="#factory-app" style="--accent: var(--orange)"><span class="emoji">🏭</span><h3>Factory App</h3><p>An AI factory that builds complete SaaS platforms for service businesses.</p></a>
+      <a class="card" href="#post-studio" style="--accent: #0a66c2"><span class="emoji">✍️</span><h3>Post Studio</h3><p>An AI agent that researches and drafts source-backed LinkedIn posts for review.</p></a>
       <a class="card" href="#games" style="--accent: var(--purple)"><span class="emoji">🎮</span><h3>Games</h3><p>Ball Drop is live — catch falling balls with your hands, on camera!</p></a>
       <a class="card" href="#personal-banker" style="--accent: var(--blue)"><span class="emoji">🏦</span><h3>Personal Banker</h3><p>A smart helper for everyday money management. Coming soon!</p></a>
       <a class="card" href="#investment-advisor" style="--accent: var(--yellow)"><span class="emoji">📈</span><h3>Investment Advisor</h3><p>Insights and guidance for growing investments. Coming soon!</p></a>
       <a class="card" href="#mycook" style="--accent: var(--red)"><span class="emoji">🍳</span><h3>MyCook</h3><p>Recipes, meal plans, and kitchen inspiration. Coming soon!</p></a>
+    </div>
+  </section>
+
+  <!-- AI HUB -->
+  <section class="tab" id="tab-ai-hub" style="--accent: var(--indigo)">
+    <div class="hero">
+      <span class="emoji">🤖</span>
+      <h1>AI Hub</h1>
+      <p class="sub">Free AI tools, courses, and guides — for everyone.</p>
+      <span class="badge">Free resources</span>
+      <p class="body">AI shouldn&rsquo;t be locked behind paywalls or jargon. This is my growing collection of the best <strong>free</strong> places to try AI, learn how it works, and use it well — whether you&rsquo;re 8 or 80. Inspired by community projects like <a href="https://aisandbox.org.nz" target="_blank" rel="noopener">AI Sandbox</a>. 💜</p>
+    </div>
+
+    <h2 class="cat">💬 Try AI right now</h2>
+    <p class="catsub">All of these have generous free tiers — just open and start chatting.</p>
+    <div class="grid">
+      <a class="card" href="https://claude.ai" target="_blank" rel="noopener" style="--accent: var(--orange)"><span class="emoji">✳️</span><h3>Claude</h3><p>Thoughtful assistant that's great at writing, analysis, and coding.</p></a>
+      <a class="card" href="https://chatgpt.com" target="_blank" rel="noopener" style="--accent: var(--green)"><span class="emoji">🌀</span><h3>ChatGPT</h3><p>The one that started it all — all-purpose chat, voice, and images.</p></a>
+      <a class="card" href="https://gemini.google.com" target="_blank" rel="noopener" style="--accent: var(--blue)"><span class="emoji">♊</span><h3>Gemini</h3><p>Google's assistant, tightly woven into Search, Gmail, and Docs.</p></a>
+      <a class="card" href="https://copilot.microsoft.com" target="_blank" rel="noopener" style="--accent: var(--teal)"><span class="emoji">🧭</span><h3>Microsoft Copilot</h3><p>Free GPT-powered helper built into Windows, Edge, and Bing.</p></a>
+      <a class="card" href="https://www.perplexity.ai" target="_blank" rel="noopener" style="--accent: var(--purple)"><span class="emoji">🔎</span><h3>Perplexity</h3><p>AI search that answers with sources you can check.</p></a>
+      <a class="card" href="https://notebooklm.google.com" target="_blank" rel="noopener" style="--accent: var(--yellow)"><span class="emoji">📓</span><h3>NotebookLM</h3><p>Upload your own notes and PDFs, then ask questions about them.</p></a>
+    </div>
+
+    <h2 class="cat">🎓 Learn AI — free courses</h2>
+    <p class="catsub">No computer science degree needed. Start anywhere.</p>
+    <div class="grid">
+      <a class="card" href="https://www.elementsofai.com" target="_blank" rel="noopener" style="--accent: var(--indigo)"><span class="emoji">🇫🇮</span><h3>Elements of AI</h3><p>University of Helsinki's famously friendly intro — no math, no code.</p></a>
+      <a class="card" href="https://www.kaggle.com/learn" target="_blank" rel="noopener" style="--accent: var(--blue)"><span class="emoji">📊</span><h3>Kaggle Learn</h3><p>Bite-size, hands-on lessons from intro Python to machine learning.</p></a>
+      <a class="card" href="https://microsoft.github.io/AI-For-Beginners/" target="_blank" rel="noopener" style="--accent: var(--teal)"><span class="emoji">📚</span><h3>AI for Beginners</h3><p>Microsoft's free 12-week curriculum, all on GitHub.</p></a>
+      <a class="card" href="https://www.deeplearning.ai/short-courses/" target="_blank" rel="noopener" style="--accent: var(--pink)"><span class="emoji">⏱️</span><h3>DeepLearning.AI</h3><p>Free 1-hour short courses on prompting, agents, and more.</p></a>
+      <a class="card" href="https://huggingface.co/learn" target="_blank" rel="noopener" style="--accent: var(--yellow)"><span class="emoji">🤗</span><h3>Hugging Face Learn</h3><p>Free courses from the home of open-source AI models.</p></a>
+      <a class="card" href="https://course.fast.ai" target="_blank" rel="noopener" style="--accent: var(--green)"><span class="emoji">🚀</span><h3>fast.ai</h3><p>The legendary free deep-learning course for coders.</p></a>
+    </div>
+
+    <h2 class="cat">✍️ Get better at asking</h2>
+    <p class="catsub">The skill of "prompting" — how you ask changes what you get.</p>
+    <div class="grid">
+      <a class="card" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener" style="--accent: var(--orange)"><span class="emoji">📖</span><h3>Anthropic's Guide</h3><p>Clear, practical prompt-engineering techniques from the Claude team.</p></a>
+      <a class="card" href="https://learnprompting.org" target="_blank" rel="noopener" style="--accent: var(--purple)"><span class="emoji">🧠</span><h3>Learn Prompting</h3><p>A free, open-source course covering prompting from basics up.</p></a>
+      <a class="card" href="https://platform.openai.com/docs/guides/prompt-engineering" target="_blank" rel="noopener" style="--accent: var(--green)"><span class="emoji">💡</span><h3>OpenAI's Guide</h3><p>Six battle-tested strategies for getting better answers.</p></a>
+    </div>
+
+    <h2 class="cat">🧒 For kids &amp; classrooms</h2>
+    <p class="catsub">Playful, safe ways for young minds to discover how AI thinks.</p>
+    <div class="grid">
+      <a class="card" href="https://teachablemachine.withgoogle.com" target="_blank" rel="noopener" style="--accent: var(--green)"><span class="emoji">🏫</span><h3>Teachable Machine</h3><p>Train a real AI model with your webcam in minutes — no code.</p></a>
+      <a class="card" href="https://quickdraw.withgoogle.com" target="_blank" rel="noopener" style="--accent: var(--yellow)"><span class="emoji">✏️</span><h3>Quick, Draw!</h3><p>Doodle while a neural network guesses what you're drawing.</p></a>
+      <a class="card" href="https://machinelearningforkids.co.uk" target="_blank" rel="noopener" style="--accent: var(--blue)"><span class="emoji">🎈</span><h3>ML for Kids</h3><p>Build AI projects with Scratch — made for schools and homes.</p></a>
+      <a class="card" href="https://code.org/ai" target="_blank" rel="noopener" style="--accent: var(--pink)"><span class="emoji">🌊</span><h3>Code.org AI</h3><p>Free AI lessons and the beloved "AI for Oceans" activity.</p></a>
+    </div>
+
+    <h2 class="cat">🛠️ Build &amp; tinker</h2>
+    <p class="catsub">Ready to go deeper? These are free playgrounds for makers.</p>
+    <div class="grid">
+      <a class="card" href="https://colab.research.google.com" target="_blank" rel="noopener" style="--accent: var(--orange)"><span class="emoji">📝</span><h3>Google Colab</h3><p>Run Python and AI experiments in your browser — free GPUs included.</p></a>
+      <a class="card" href="https://huggingface.co/spaces" target="_blank" rel="noopener" style="--accent: var(--purple)"><span class="emoji">🎪</span><h3>HF Spaces</h3><p>Thousands of community AI demos you can try with one click.</p></a>
+      <a class="card" href="https://ollama.com" target="_blank" rel="noopener" style="--accent: var(--teal)"><span class="emoji">🦙</span><h3>Ollama</h3><p>Run open-source AI models privately on your own computer.</p></a>
+    </div>
+
+    <h2 class="cat">🧭 Use AI wisely</h2>
+    <p class="catsub">My house rules — they work for kids and grown-ups alike.</p>
+    <div class="grid">
+      <div class="card" style="--accent: var(--pink)"><span class="emoji">✅</span><h3>Trust, but verify</h3><p>AI can sound confident and still be wrong. Double-check facts that matter.</p></div>
+      <div class="card" style="--accent: var(--red)"><span class="emoji">🔒</span><h3>Keep private things private</h3><p>Never paste passwords, ID numbers, or financial details into a chatbot.</p></div>
+      <div class="card" style="--accent: var(--blue)"><span class="emoji">🧑‍🎨</span><h3>You own the thinking</h3><p>Use AI as a helper and sounding board — the ideas and judgment stay yours.</p></div>
+      <div class="card" style="--accent: var(--green)"><span class="emoji">⚖️</span><h3>Compare answers</h3><p>Ask two different AIs the same question — the differences are revealing.</p></div>
+      <div class="card" style="--accent: var(--yellow)"><span class="emoji">👨‍👩‍👧</span><h3>Explore together</h3><p>For kids, AI is best discovered side-by-side with a grown-up.</p></div>
+    </div>
+
+    <h2 class="cat">🔤 Little AI dictionary</h2>
+    <p class="catsub">Eight words that make every AI article suddenly make sense.</p>
+    <div class="grid">
+      <div class="card" style="--accent: var(--indigo)"><h3>LLM</h3><p>"Large Language Model" — the engine behind chatbots, trained on huge amounts of text to predict what comes next.</p></div>
+      <div class="card" style="--accent: var(--pink)"><h3>Prompt</h3><p>Whatever you type to an AI. Better prompts (clear goal, context, examples) get better answers.</p></div>
+      <div class="card" style="--accent: var(--orange)"><h3>Token</h3><p>The chunks AI reads text in — roughly ¾ of a word. Limits and prices are measured in tokens.</p></div>
+      <div class="card" style="--accent: var(--red)"><h3>Hallucination</h3><p>When AI confidently makes something up. The reason rule #1 is "trust, but verify."</p></div>
+      <div class="card" style="--accent: var(--green)"><h3>Agent</h3><p>An AI that doesn't just answer but takes steps — browsing, writing files, using tools — to finish a task.</p></div>
+      <div class="card" style="--accent: var(--blue)"><h3>Fine-tuning</h3><p>Extra training that teaches a general model a specific skill, style, or subject.</p></div>
+      <div class="card" style="--accent: var(--purple)"><h3>Open-source model</h3><p>An AI model anyone can download and run themselves — like the ones on Hugging Face or Ollama.</p></div>
+      <div class="card" style="--accent: var(--teal)"><h3>Multimodal</h3><p>AI that handles more than text — images, voice, video — in one conversation.</p></div>
     </div>
   </section>
 
@@ -260,6 +354,19 @@
       <p class="body"><strong>Ball Drop! 🎾</strong> — a camera game for every age. Pick what falls from the sky — fruits 🍓, veggies 🥕, farm eggs &amp; wheat 🥚🌾, sweets 🍩, sports balls ⚽, planets 🪐, or sea creatures 🐠 — then wave your hands to catch them! Climb levels that get faster and trickier, grab golden stars for bonus points, and dodge the bombs. Easy, Normal, and Hard modes mean little kids and grown-ups can all play. Nothing is recorded — the camera stays on your device.</p>
       <div class="chips"><span>Camera play</span><span>8 themes</span><span>Endless levels</span><span>3 difficulty modes</span><span>All ages</span></div>
       <div class="cta"><a href="games/ball-drop.html">Play Ball Drop! 🎾</a></div>
+    </div>
+  </section>
+
+  <!-- POST STUDIO -->
+  <section class="tab" id="tab-post-studio" style="--accent: #0a66c2">
+    <div class="hero">
+      <span class="emoji">✍️</span>
+      <h1>LinkedIn Post Studio</h1>
+      <p class="sub">An AI writing agent for intelligent, source-backed LinkedIn posts.</p>
+      <span class="badge">Working project</span>
+      <p class="body">Pick a topic pillar — <strong>Finance Transformation 💰, Latest in AI 🤖, SAP Products 🧩,</strong> or an evergreen <strong>Knowledge Topic 📚</strong> — and the studio researches the latest news live on the web, then drafts two post options in a punchy, influencer style where <em>every claim is referenced with sources</em>. You review, edit, copy, and post. Nothing goes out without your approval. Bring your own Claude API key (stored only in your browser).</p>
+      <div class="chips"><span>Claude API</span><span>Live web research</span><span>Cited sources</span><span>Human review</span><span>2 drafts per run</span></div>
+      <div class="cta"><a href="linkedin/post-studio.html">Open Post Studio ✍️</a></div>
     </div>
   </section>
 
