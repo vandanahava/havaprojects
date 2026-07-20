@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>LinkedIn Post Studio ✍️</title>
-<meta name="description" content="Generate research-backed LinkedIn posts on finance transformation, AI, and SAP — with sources.">
+<meta name="description" content="Generate research-backed LinkedIn posts on finance transformation, AI, and SAP — powered by the open-weight Kimi K3 model.">
 <style>
   :root {
     --bg: #fffaf3;
@@ -128,11 +128,11 @@
   <!-- API KEY SETUP -->
   <section class="card" id="key-card">
     <h2>🔑 One-time setup</h2>
-    <p class="hint">This studio uses the Claude API to research and write. Paste your Anthropic API key
-      (get one at <a href="https://console.anthropic.com/settings/keys" target="_blank" rel="noopener">console.anthropic.com</a>).
+    <p class="hint">This studio runs on <strong>Kimi K3</strong>, an open-weight model, served through OpenRouter.
+      Paste your OpenRouter API key (create one free at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>, then add a few dollars of credit).
       The key is stored <strong>only in this browser</strong> — it never touches the website's code or any server of ours.</p>
     <div class="keyrow">
-      <input type="password" id="key-input" placeholder="sk-ant-...">
+      <input type="password" id="key-input" placeholder="sk-or-...">
       <button class="btn small" id="key-save">Save</button>
     </div>
     <p id="key-status" hidden></p>
@@ -157,14 +157,15 @@
   <!-- RESULTS -->
   <div id="results"></div>
 
-  <footer>Drafts only — you review, then post on LinkedIn yourself. Nothing is posted automatically.</footer>
+  <footer>Powered by Kimi K3 (open-weight, via OpenRouter). Drafts only — you review, then post on LinkedIn yourself. Nothing is posted automatically.</footer>
 </div>
 
 <script>
 (() => {
-  const KEY_STORAGE = "anthropic-api-key";
-  const API_URL = "https://api.anthropic.com/v1/messages";
-  const MODEL = "claude-opus-4-8";
+  const KEY_STORAGE = "openrouter-api-key";
+  const API_URL = "https://openrouter.ai/api/v1/chat/completions";
+  // Kimi K3: Moonshot AI's open-weight model; ":online" adds OpenRouter's web-search plugin
+  const MODEL = "moonshotai/kimi-k3:online";
 
   const PILLARS = {
     finance: {
@@ -197,7 +198,7 @@ Voice: authentic and human, the way respected practitioners like Ethan Mollick a
 - CRITICAL: every factual claim must come from your web research. Weave publication names into the prose ("Fortune's piece on...") and end with the full source URLs, introduced low-key (e.g. "Both pieces are worth the read:"). Never invent a statistic, quote, or URL.
 - Total length per post: 800-1800 characters (LinkedIn limit is 3000).
 
-Process: first use web search to find what is genuinely new and interesting (prefer the last 2 weeks unless the topic is evergreen). Then draft several angles internally, discard anything that sounds like AI-generated LinkedIn content, and output the TWO most authentic posts — different angles and structures, same underlying research.
+Process: live web search results are provided alongside this request — ground every claim in them, favoring what is genuinely new (last 2 weeks) unless the topic is evergreen. Use only URLs that appear in those results. Draft several angles internally, discard anything that sounds like AI-generated LinkedIn content, and output the TWO most authentic posts — different angles and structures, same underlying research.
 
 Output format — EXACTLY this, nothing else before, between, or after:
 ===POST 1===
@@ -217,8 +218,8 @@ Output format — EXACTLY this, nothing else before, between, or after:
   }
   el("key-save").addEventListener("click", () => {
     const k = el("key-input").value.trim();
-    if (!k.startsWith("sk-ant-")) {
-      el("key-status").textContent = "That doesn't look like an Anthropic key (should start with sk-ant-).";
+    if (!k.startsWith("sk-or-")) {
+      el("key-status").textContent = "That doesn't look like an OpenRouter key (should start with sk-or-).";
       el("key-status").style.color = "var(--pink)";
       el("key-status").hidden = false;
       return;
@@ -240,28 +241,28 @@ Output format — EXACTLY this, nothing else before, between, or after:
   pillarBtns[1].classList.add("sel");
 
   // ---------- generation ----------
-  async function callClaude(messages) {
+  async function callModel(userPrompt) {
     const res = await fetch(API_URL, {
       method: "POST",
       headers: {
         "content-type": "application/json",
-        "x-api-key": getKey(),
-        "anthropic-version": "2023-06-01",
-        "anthropic-dangerous-direct-browser-access": "true",
+        "authorization": "Bearer " + getKey(),
+        "x-title": "Hava LinkedIn Post Studio",
       },
       body: JSON.stringify({
         model: MODEL,
-        max_tokens: 16000,
-        thinking: { type: "adaptive" },
-        system: SYSTEM_PROMPT,
-        tools: [{ type: "web_search_20260209", name: "web_search", max_uses: 6 }],
-        messages,
+        max_tokens: 8000,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: userPrompt },
+        ],
       }),
     });
     if (!res.ok) {
       const body = await res.json().catch(() => ({}));
       const msg = body?.error?.message || res.statusText;
       if (res.status === 401) throw new Error("Your API key was rejected — click 'Change API key' and re-enter it.");
+      if (res.status === 402) throw new Error("Your OpenRouter account is out of credit — top up at openrouter.ai.");
       if (res.status === 429) throw new Error("Rate limited by the API — wait a minute and try again.");
       throw new Error("API error (" + res.status + "): " + msg);
     }
@@ -285,26 +286,8 @@ Output format — EXACTLY this, nothing else before, between, or after:
       (angle ? ("\n\nSpecific angle requested: " + angle) : "");
 
     try {
-      let messages = [{ role: "user", content: userPrompt }];
-      let response = await callClaude(messages);
-
-      // the server-side search loop can pause; resume by re-sending with the assistant turn appended
-      let continuations = 0;
-      while (response.stop_reason === "pause_turn" && continuations < 4) {
-        continuations++;
-        status.innerHTML = '<span class="spin">🔎</span> Still researching… (round ' + (continuations + 1) + ")";
-        messages = [...messages, { role: "assistant", content: response.content }];
-        response = await callClaude(messages);
-      }
-
-      if (response.stop_reason === "refusal") {
-        throw new Error("The model declined this topic. Try a different angle.");
-      }
-
-      const text = response.content
-        .filter(b => b.type === "text")
-        .map(b => b.text)
-        .join("\n");
+      const response = await callModel(userPrompt);
+      const text = response.choices?.[0]?.message?.content || "";
       const posts = text
         .split(/===POST \d+===/)
         .map(s => s.trim())
