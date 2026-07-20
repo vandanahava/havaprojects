@@ -154,6 +154,15 @@
     <p id="error" hidden></p>
   </section>
 
+  <!-- DAILY DRAFTS -->
+  <section class="card" id="daily-card" style="border-top-color: var(--orange);">
+    <h2>🗂️ Daily drafts</h2>
+    <p class="hint">Every day at 5pm the nightly agent researches your pillars and drops a draft here — one topic, three writing styles, sources included. Pick a day to review.</p>
+    <div class="pillars" id="draft-dates"></div>
+    <p class="hint" id="daily-empty" hidden>No drafts yet — the nightly agent runs at 5:00 PM Eastern.</p>
+    <div id="draft-view"></div>
+  </section>
+
   <!-- RESULTS -->
   <div id="results"></div>
 
@@ -352,7 +361,88 @@ Output format — EXACTLY this, nothing else before, between, or after:
     container.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
+  // ---------- daily drafts review ----------
+  async function loadDailyDrafts() {
+    let dates = [];
+    try {
+      const res = await fetch("drafts/index.json", { cache: "no-store" });
+      if (res.ok) dates = (await res.json()).dates || [];
+    } catch (e) { /* local file:// or no drafts yet */ }
+    const bar = el("draft-dates");
+    bar.innerHTML = "";
+    el("daily-empty").hidden = dates.length > 0;
+    dates.slice(0, 14).forEach((d, i) => {
+      const b = document.createElement("button");
+      b.textContent = d;
+      b.addEventListener("click", () => {
+        [...bar.children].forEach(x => x.classList.toggle("sel", x === b));
+        showDraft(d);
+      });
+      bar.appendChild(b);
+      if (i === 0) b.click();
+    });
+  }
+
+  async function showDraft(date) {
+    const view = el("draft-view");
+    view.innerHTML = '<p class="hint">Loading…</p>';
+    try {
+      const d = await (await fetch("drafts/" + date + ".json", { cache: "no-store" })).json();
+      view.innerHTML = "";
+
+      const head = document.createElement("div");
+      head.style.marginTop = "14px";
+      head.innerHTML =
+        "<h2>" + esc(d.topic) + "</h2>" +
+        '<p class="hint">' + esc(d.why_now || "") + "</p>" +
+        '<p class="hint" style="margin-top:8px;"><strong>Other topic candidates that day:</strong> ' +
+        (d.topic_candidates || []).map(c => esc(c.title)).join(" · ") +
+        " — want one of these instead? Paste it into the composer above as a custom angle.</p>";
+      view.appendChild(head);
+
+      (d.posts || []).forEach(p => {
+        const card = document.createElement("div");
+        card.style.marginTop = "14px";
+        card.innerHTML =
+          '<h2 style="font-size:1.05rem;">Style: ' + esc(p.style) + "</h2>" +
+          '<textarea spellcheck="false" style="min-height:220px;"></textarea>' +
+          '<div class="post-meta"><span class="charcount"></span>' +
+          '<div class="actions"><button class="btn small ghost copy-btn">📋 Copy</button>' +
+          '<button class="btn small open-btn">Copy &amp; open LinkedIn →</button></div></div>';
+        const ta = card.querySelector("textarea");
+        const count = card.querySelector(".charcount");
+        ta.value = p.text;
+        const upd = () => {
+          count.textContent = ta.value.length + " / 3000 characters";
+          ta.style.height = "auto";
+          ta.style.height = ta.scrollHeight + 4 + "px";
+        };
+        ta.addEventListener("input", upd);
+        const copy = async () => {
+          await navigator.clipboard.writeText(ta.value);
+          const b = card.querySelector(".copy-btn");
+          b.textContent = "✅ Copied!";
+          setTimeout(() => (b.textContent = "📋 Copy"), 1600);
+        };
+        card.querySelector(".copy-btn").addEventListener("click", copy);
+        card.querySelector(".open-btn").addEventListener("click", async () => {
+          await copy();
+          window.open("https://www.linkedin.com/feed/", "_blank", "noopener");
+        });
+        view.appendChild(card);
+        upd();
+      });
+    } catch (e) {
+      view.innerHTML = '<p class="hint">Could not load that draft.</p>';
+    }
+  }
+
+  function esc(s) {
+    return String(s || "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  }
+
   refreshUI();
+  loadDailyDrafts();
 
   // test hook: ?testkey=1 seeds a fake key so automated tests can reach the composer
   if (new URLSearchParams(location.search).get("testkey")) {
