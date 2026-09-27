@@ -1,0 +1,42 @@
+{
+  "date": "2026-09-27",
+  "topic": "The AI-agent governance gap: Dataiku's Agent Management and the problem of unlisted agents",
+  "why_now": "Dataiku launched its standalone Agent Management product on Sept 24, 2026 (GA in October), landing in the same week as other agent-governance moves and spotlighting an IBM finding that fewer than one in five organizations can even inventory their AI systems.",
+  "topic_candidates": [
+    {
+      "title": "Dataiku ships Agent Management to inventory and govern AI agents across platforms",
+      "why": "Fresh this week (Sept 24), concrete, and reframes the agent wave around a governance gap rather than more capability hype.",
+      "source": "https://www.helpnetsecurity.com/2026/09/25/dataiku-agent-management/"
+    },
+    {
+      "title": "SAP Joule for Developers free promotion ends Sept 30, 2026, shifting to AI Units pricing",
+      "why": "A hard deadline this very week that forces SAP teams to plan the licensing transition before Oct 1.",
+      "source": "https://community.sap.com/t5/technology-blog-posts-by-sap/sap-joule-for-developers-end-of-the-promotional-period-and-the-path-forward/ba-p/14490003"
+    },
+    {
+      "title": "CFOs are moving budgets from AI copilots to autonomous finance agents",
+      "why": "Reports point to a majority of CFOs funding autonomous finance agents and taking on governance of those processes as a core duty.",
+      "source": "https://chatfin.ai/blog/2026-finance-ai-spending-cfo-strategies-for-autonomous-agent-deployment/"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep coming back to a single number I read this week. In an IBM survey that Dataiku cited, fewer than one in five organizations could produce a complete, up-to-date inventory of the AI systems they are already running. We spent two years learning to build agents. Somewhere along the way we skipped the part where you write down which ones exist.\n\nDataiku's answer, announced at its Succeed conference on September 24 and generally available in October, is a standalone product called Agent Management. The premise is almost mundane: find every agent a company runs, no matter which platform built it — Copilot Studio, Agentforce, Bedrock, Vertex, Snowflake Cortex — and record who owns it, what it is supposed to do, and what data it can touch. Then keep re-testing the risky ones on a schedule.\n\nWhat strikes me is that this is less an AI story than a plain governance story wearing new clothes. It rhymes with how we eventually learned to manage spreadsheets, service accounts and shadow IT — after the sprawl, not before.\n\nI am not convinced a cross-platform layer is the obvious winner; the native tooling inside each cloud keeps improving, and Help Net Security is careful to call this an emerging category rather than a settled one. But my guess is the instinct is right. You cannot govern what you cannot list.\n\nHelp Net Security: https://www.helpnetsecurity.com/2026/09/25/dataiku-agent-management/\nForkast: https://forkast.news/dataiku-ships-standalone-agent-governance-with-a-bet-that-cross-platform-beats-native/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The most useful figure in this week's Dataiku launch is not about capability, it is about visibility. Citing an IBM survey, Dataiku notes that fewer than one in five organizations keep a complete, current inventory of their AI systems. Set that against Gartner's projection that 40% of enterprise apps will ship task-specific agents this year, up from under 5% in 2025, and the real problem comes into focus: agent creation is outrunning agent accounting.\n\nAnnounced September 24 and generally available in October, Dataiku's Agent Management is a standalone product that discovers agents across Copilot Studio, Azure Foundry, Agentforce, Bedrock, Vertex, Databricks and Snowflake Cortex, then attaches ownership, purpose, data access and scheduled tests to each one. Pricing is per instance annually, with monitoring metered per agent — a detail worth noting, because a per-agent meter only makes sense once you accept you will have hundreds.\n\nThe measured read: this is governance catching up to deployment, the same lag we lived through with cloud spend and SaaS licenses. Forkast frames the real bet as cross-platform versus native, and I think that is the open question. Hyperscalers have every incentive to make their own agents observable inside their own walls. Whether a neutral layer wins depends on how mixed enterprise estates actually stay.\n\nHelp Net Security: https://www.helpnetsecurity.com/2026/09/25/dataiku-agent-management/\nForkast: https://forkast.news/dataiku-ships-standalone-agent-governance-with-a-bet-that-cross-platform-beats-native/"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me from this week's Dataiku announcement was one of the smallest: alongside each AI agent, the system records what data it can access. Not how clever the agent is, not what it produces — what it can reach.\n\nThat single field says a lot about where we are. Dataiku launched Agent Management on September 24, a standalone product that inventories every agent a company runs across platforms like Copilot Studio, Agentforce, Bedrock and Snowflake Cortex. Per Help Net Security's coverage, it exists because fewer than one in five organizations, in an IBM survey, could produce a complete list of their AI systems.\n\nWiden out and the pattern is familiar. Every technology wave has a loud first act of building and a quieter second act of asking what we actually built and what it can touch. Databases had it. Cloud had it. Agents are having it faster, because an agent with data access and the ability to act sits closer to a colleague than to a script.\n\nI do not want to overclaim. A certification record and scheduled tests will not make a badly scoped agent safe, and Forkast rightly calls the cross-platform approach a bet rather than a verdict. But the humble question underneath — what can this thing reach? — feels like the one worth keeping on the desk.\n\nHelp Net Security: https://www.helpnetsecurity.com/2026/09/25/dataiku-agent-management/\nForkast: https://forkast.news/dataiku-ships-standalone-agent-governance-with-a-bet-that-cross-platform-beats-native/"
+    }
+  ],
+  "sources": [
+    "https://www.helpnetsecurity.com/2026/09/25/dataiku-agent-management/",
+    "https://forkast.news/dataiku-ships-standalone-agent-governance-with-a-bet-that-cross-platform-beats-native/",
+    "https://www.dataiku.com/company/news/dataiku-agent-management-general-availability",
+    "https://www.gartner.com/en/newsroom/press-releases/2025-08-26-gartner-predicts-40-percent-of-enterprise-apps-will-feature-task-specific-ai-agents-by-2026-up-from-less-than-5-percent-in-2025"
+  ]
+}
