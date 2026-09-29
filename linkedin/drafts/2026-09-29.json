@@ -1,0 +1,40 @@
+{
+  "date": "2026-09-29",
+  "topic": "The finance AI trust gap: agents are doing real accounting work, but CFOs are making human oversight the operating model",
+  "why_now": "Gartner's late-August 2026 guidance urging CFOs to pilot governance before ROI landed against fresh benchmark data showing agentic tools already embedded in finance yet only a sliver of CFOs fully trusting their output.",
+  "topic_candidates": [
+    {
+      "title": "The finance AI trust gap and governance-first pilots",
+      "why": "88% of CFOs use agentic tools but only 14% fully trust the output, and Gartner just told them to pilot governance before ROI.",
+      "source": "https://www.cfodive.com/news/massive-trust-gap-hinders-cfo-ai-ambitions-study-finds/810786/"
+    },
+    {
+      "title": "SAP's 'Autonomous Enterprise' and Joule agents everywhere",
+      "why": "SAP now has 30+ specialized agents and 2,500+ Joule Skills with agent-to-agent orchestration across SAP and non-SAP systems.",
+      "source": "https://sapinsider.org/articles/joule-is-now-the-front-door-to-your-business-what-sap-sapphire-2026-means-for-customers-vendors-and-partners/"
+    },
+    {
+      "title": "Enterprise AI agent pilots are stalling",
+      "why": "Gartner/IDC data suggests ~89% of agent pilots stall and 40%+ of projects may be axed by 2027 on unclear value and weak data foundations.",
+      "source": "https://www.beri.net/article/ai-agent-adoption-enterprise-2026-gartner-idc"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep coming back to one number from CFO Dive's write-up of Maximor's finance AI benchmark this year: 88% of the mid-market CFOs surveyed already run at least one agentic AI tool, yet only 14% say they completely trust AI to produce accurate accounting data on its own. That gap feels like the whole story. We've adopted the tools well ahead of trusting them, and 86% of the same group had already hit hallucinated or wrong figures.\n\nWhat struck me is that this isn't really an argument against the technology. Ninety-seven percent still called human oversight critical — not as a hedge, but as the way the function is meant to run. The quiet shift is that oversight is becoming a design principle rather than an afterthought.\n\nGartner made a similar point in late August, urging CFOs to pilot governance before chasing ROI, with the line that early pilots fail from unclear controls, not weak models. My guess is the teams that win here won't be the ones who deployed fastest, but the ones who nailed traceability — who can explain what an agent did and why — before it went near the ledger.\n\nThe counterpoint I hold loosely: governance can also become an excuse to stall forever. Trust gets built by letting agents do real work, carefully, not by keeping them in a sandbox.\n\nBoth worth the read:\nCFO Dive: https://www.cfodive.com/news/massive-trust-gap-hinders-cfo-ai-ambitions-study-finds/810786/\nGartner via CFOtech: https://cfotech.com.au/story/gartner-urges-cfos-to-pilot-finance-ai-with-governance"
+    },
+    {
+      "style": "Analytical",
+      "text": "The figures in Maximor's finance AI benchmark, as reported by CFO Dive, sketch a function that has adopted faster than it has learned to trust. Among the mid-market CFOs surveyed, 88% already run at least one agentic AI tool and 40% say AI is fully integrated into finance. But only 14% completely trust AI to deliver accurate accounting data on its own, and 86% have already run into inaccurate or hallucinated figures.\n\nPut those together and the picture is coherent rather than contradictory. Adoption measures usage; the 14% measures verified reliability. The spread between the two isn't skepticism so much as a decision that oversight is the control that makes adoption safe — 97% called human oversight critical.\n\nThat's why Gartner's late-August guidance reads as sensible rather than timid. It argues CFOs should judge early agent pilots on control and traceability, not ROI, on the logic that pilots fail from unclear controls more than weak technology. If most adopters are seeing bad outputs, the binding constraint really is verification, not capability.\n\nThe nuance I'd add: none of this tells us where the reliability ceiling sits. A 14% trust rate could climb quickly as data foundations improve, or plateau if subtle errors stay hard to catch. My read is that the metric worth watching next year isn't adoption, which is near saturation, but the trust number — and whether governance actually moves it.\n\nSources:\nhttps://www.cfodive.com/news/massive-trust-gap-hinders-cfo-ai-ambitions-study-finds/810786/\nhttps://cfotech.com.au/story/gartner-urges-cfos-to-pilot-finance-ai-with-governance"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me was a single number: 14. In Maximor's finance AI benchmark, covered by CFO Dive, that's the share of CFOs who say they completely trust AI to deliver accurate accounting data on its own. Fourteen out of a hundred — in a group where 88% are already using agentic tools.\n\nI find that number more honest than most AI headlines. It's the sound of people who use something every day and still check its work. And they have reason to: 86% in the same survey said they'd hit inaccurate or hallucinated data. The tools are in the building; the trust hasn't caught up.\n\nWiden the lens and it stops looking like hesitation. Ninety-seven percent said human oversight is critical, which reframes oversight from a temporary safeguard into the actual operating model. Gartner made a parallel argument in late August: judge early finance AI pilots on control and traceability rather than ROI, because pilots fail from unclear controls more than from weak models.\n\nWhat I'm still unsure about is whether 14% is a floor or a ceiling. It might rise fast as the data plumbing improves, or sit there because catching a subtle error in a reconciliation is genuinely hard. Either way, that one number feels like a better gauge of where finance AI actually is than any adoption stat.\n\nBoth are worth the read:\nhttps://www.cfodive.com/news/massive-trust-gap-hinders-cfo-ai-ambitions-study-finds/810786/\nhttps://cfotech.com.au/story/gartner-urges-cfos-to-pilot-finance-ai-with-governance"
+    }
+  ],
+  "sources": [
+    "https://www.cfodive.com/news/massive-trust-gap-hinders-cfo-ai-ambitions-study-finds/810786/",
+    "https://cfotech.com.au/story/gartner-urges-cfos-to-pilot-finance-ai-with-governance"
+  ]
+}
