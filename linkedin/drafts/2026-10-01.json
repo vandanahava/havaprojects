@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-01",
+  "topic": "The CFO's AI mandate is expanding far faster than finance's readiness to deliver it",
+  "why_now": "IBM's new 1,500-CFO survey was written up in Fortune on Sept 30 and SAP's financial-close agents hit availability milestones the same week, putting the gap between CFO ambition and finance's operational readiness squarely in the news.",
+  "topic_candidates": [
+    {
+      "title": "CFOs' role expands into AI strategy, but only 6% feel 'transformation-ready'",
+      "why": "Fresh IBM IBV survey of 1,500 CFOs, covered by Fortune on Sept 30, quantifies the mandate-vs-capability gap.",
+      "source": "https://fortune.com/2026/09/30/ai-giving-cfo-bigger-slice-c-suite-new-ibm-data-shows/"
+    },
+    {
+      "title": "SAP's Accounting Accruals Agent drafts close entries but keeps humans at the commit point",
+      "why": "Concrete, specific agentic-finance release in restricted availability for S/4HANA Cloud, GA targeted Q1 2027.",
+      "source": "https://erp.today/sap-accounting-accruals-agent-month-end-close"
+    },
+    {
+      "title": "The agentic-AI governance gap in finance",
+      "why": "Deloitte's 2026 finance trends frame the tension between agentic ambition and immature governance/decision rights.",
+      "source": "https://www.deloitte.com/us/en/insights/topics/leadership/finance-trends-leadership/2026.html"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this week reading IBM's new survey of 1,500 CFOs across 33 countries, written up in Fortune, and the number that stayed with me wasn't the optimistic one. Yes, 62% of finance chiefs now say their role has stretched into enterprise technology and AI strategy, and that part is easy to celebrate. But only 6% described their finance organisation as 'transformation-ready,' meaning AI is genuinely embedded in how they work. I keep turning that gap over. The ambition has clearly outrun the plumbing.\n\nWhat I find honest in the IBM framing is the sequencing. Jim Kavanaugh, their own CFO, talks about establishing data architecture and governance before deploying AI on top, not the other way around. It's an unglamorous order of operations, and my guess is it's exactly why so few teams feel ready. The interesting work isn't buying another agent; it's cleaning up the ledger and the decision rights underneath it.\n\nI don't want to be too cynical. The same study found AI-first CFOs grew revenue 23% faster than peers between 2022 and 2024, so the payoff looks real for those who do the groundwork. I just think we're in the slower, less photogenic middle of this, where the headline says 'CFO as agent of transformation' and the daily reality is still mostly data cleanup. Both things seem true at once.\n\nWorth a read: https://fortune.com/2026/09/30/ai-giving-cfo-bigger-slice-c-suite-new-ibm-data-shows/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The IBM Institute for Business Value put real numbers on something finance has felt anecdotally: the CFO job is widening. In a survey of 1,500 CFOs across 33 countries, reported by Fortune this week, 62% said their role has expanded into enterprise technology or AI strategy, and more than half reported greater authority over portfolio management and capital reallocation. Looking to 2030, 56% expect to own AI's financial and ethical guardrails.\n\nWhat makes the data worth taking seriously is the counterweight sitting right next to it. Only 6% of those same CFOs called their finance organisation 'transformation-ready.' So the mandate is expanding faster than the operational capability to meet it. That's less a contradiction than an accurate description of where most teams actually are.\n\nYou can see the gap closing in slow, concrete ways. SAP's new Accounting Accruals Agent, now in restricted availability for S/4HANA Cloud and targeted for general availability in Q1 2027, reads a plain-language accrual policy, pulls historical data, and drafts journal entries, but an accountant still accepts, adjusts, or rejects each one before posting. That design choice tells you how far real autonomy has come: substantial on preparation, deliberately human at the point of commitment.\n\nMy read is that the 23%-higher revenue growth IBM attributes to 'AI-first' CFOs is less about the models and more about who did the boring groundwork first: data architecture, governance, decision rights.\n\nSources:\nhttps://fortune.com/2026/09/30/ai-giving-cfo-bigger-slice-c-suite-new-ibm-data-shows/\nhttps://erp.today/sap-accounting-accruals-agent-month-end-close"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me this week was small and almost procedural. To use SAP's new Accounting Accruals Agent, a finance team first hands it a plain-language handbook: accrual categories, how each is calculated, which GL accounts to hit, when to reverse. The machine then applies those rules to historical data, proposes the journal entries with its reasoning shown, and an accountant accepts, adjusts, or rejects each one before anything posts. ERP.today's write-up notes it's in restricted availability now, with general availability targeted for Q1 2027.\n\nI like that detail because it quietly redefines the work. The valuable act is no longer keying the accrual; it's writing the handbook clearly enough that a system can follow it. Tacit knowledge that used to live in a senior accountant's head has to become explicit, documented policy. That's harder than it sounds, and arguably more useful than the automation itself.\n\nWiden the lens and this is the same story IBM told in its survey of 1,500 CFOs, covered by Fortune: 62% say their role now reaches into AI strategy, yet only 6% feel 'transformation-ready.' My guess is the distance between those two numbers is made of exactly this kind of unglamorous translation work, turning judgment into rules a machine can execute, and deciding where the human still signs.\n\nBoth pieces are worth the read:\nhttps://erp.today/sap-accounting-accruals-agent-month-end-close\nhttps://fortune.com/2026/09/30/ai-giving-cfo-bigger-slice-c-suite-new-ibm-data-shows/"
+    }
+  ],
+  "sources": [
+    "https://fortune.com/2026/09/30/ai-giving-cfo-bigger-slice-c-suite-new-ibm-data-shows/",
+    "https://erp.today/sap-accounting-accruals-agent-month-end-close"
+  ]
+}
