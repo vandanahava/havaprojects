@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-02",
+  "topic": "Autonomous finance: AI agents, the real-time close, and the governance gap",
+  "why_now": "BCG's new 'AI-First Finance Function' report and SAP's shipping Autonomous Close Assistant are pushing agent-run finance into the mainstream just as Gartner warns that more than 40% of agentic AI projects will be scrapped by 2027.",
+  "topic_candidates": [
+    {
+      "title": "Autonomous finance: AI agents, the real-time close, and the governance gap",
+      "why": "BCG's AI-first vision and SAP's 200+ finance agents collide with Gartner's 40% cancellation warning — a rich, balanced practitioner topic.",
+      "source": "https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function"
+    },
+    {
+      "title": "SAP's 'Joule Everywhere': agentic ABAP and the Autonomous Enterprise",
+      "why": "SAP's Sapphire 2026 push put Joule and 224 agents across S/4HANA and BTP, with the dev promo ending September 2026.",
+      "source": "https://community.sap.com/t5/technology-blog-posts-by-members/joule-everywhere-breaking-down-sap-s-biggest-ai-announcements-from-sapphire/ba-p/14404234"
+    },
+    {
+      "title": "The late-September 2026 model wave: GPT-6 Sol, Claude Opus 5.5, Grok 4.7",
+      "why": "Three frontier models landed within a week (Sept 21-29), nearly all tuned for agentic, tool-calling workflows.",
+      "source": "https://llmgateway.io/timeline"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this week reading about what finance teams are supposed to look like a few years from now, and two ideas kept rubbing against each other in my head.\n\nBCG's \"AI-First Finance Function\" paints a confident picture: agents executing, monitoring and optimising work in real time, a close that runs continuously rather than in a month-end scramble, the headcount needed for today's workflows potentially halved. They point to partner companies that have automated 90% of reporting and freed more than 30% of their teams' capacity for advisory work. SAP is building toward the same future in concrete product terms — its Autonomous Close Assistant, part of a push CFO Dive described as 50-plus assistants coordinating 200-plus agents, aims to compress the close from weeks to days.\n\nWhat I keep returning to, though, is Gartner's quieter warning that more than 40% of agentic AI projects will be scrapped by 2027 — and that they tend to die from governance gaps and unclear ROI, not from the models being incapable. That reframes the work for me. The hard part isn't teaching an agent to reconcile an account; it's deciding who owns the number when it does, and proving it to an auditor.\n\nMy guess is the teams that win here won't be the ones that deploy the most agents, but the ones that get boring about control first. Still early days, and I'd be curious whether that matches what others are seeing.\n\nWorth the read:\nBCG: https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function\nCFO Dive on SAP: https://www.cfodive.com/news/sap-ramps-push-autonomous-finance-agentic-ai/819929/\nGartner, via CFO Dive: https://www.cfodive.com/news/cfos-ai-adoption-slows-challenges-mount-gartner/805949/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The numbers around autonomous finance are worth lining up next to each other, because they tell two stories at once.\n\nOn the optimistic side, BCG's \"AI-First Finance Function\" report has 88% of CFOs calling AI an essential or important priority, and cites partner companies reaching 80% touchless invoice processing, 90% automated reporting, and a 50%-plus improvement in the predictive power of their models. SAP is turning that ambition into shipping software: its Autonomous Close Assistant, part of what CFO Dive reported as more than 200 agents and 50-plus assistants, targets an 80% cut in manual close tasks and a close measured in days rather than weeks.\n\nSet against those figures is one from Gartner that deserves equal weight: more than 40% of agentic AI projects are expected to be cancelled by the end of 2027. The telling part is why — not model failure, but escalating costs, unclear business value, and missing risk controls.\n\nSo the realistic read, I think, is that the technical ceiling is high and the operational floor is low. An 80% automation target and a 40% cancellation rate can both be true, because they measure different things: capability versus governance. The gap between them is where most of the actual finance-transformation work will sit over the next two years. My bet is that the deciding metric won't be how much a team automates, but how much of it stays auditable when it does.\n\nSources:\nBCG: https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function\nCFO Dive: https://www.cfodive.com/news/sap-ramps-push-autonomous-finance-agentic-ai/819929/\nGartner, via CFO Dive: https://www.cfodive.com/news/cfos-ai-adoption-slows-challenges-mount-gartner/805949/"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me this week was a single line in Gartner's work on agentic AI: the projects that fail rarely fail because the model couldn't do the work. They die from escalating costs, unclear value, and missing risk controls. The capability was never the bottleneck.\n\nI found that oddly clarifying, because most of the finance coverage right now runs the other way. BCG's \"AI-First Finance Function\" report describes a near future of continuous close, real-time auditability, and the headcount for today's workflows potentially halved. SAP has put product behind the same idea — an Autonomous Close Assistant that CFO Dive situates within a suite of 200-plus agents, built to turn a weeks-long close into a days-long one. Read on their own, those pieces make automation sound like the whole game.\n\nBut Gartner's line widens the frame. If more than 40% of these projects get cancelled by 2027, and the cause is governance rather than intelligence, then the scarce skill in finance isn't prompting an agent — it's defining its decision rights, its escalation paths, and who signs off on the output.\n\nIt makes me think the next couple of years of finance transformation will be won in unglamorous places: data definitions, audit trails, exception handling. Less a story about smarter machines, more one about clearer accountability. Early days, but that's the shift I'll be watching.\n\nBCG: https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function\nSAP close, via CFO Dive: https://www.cfodive.com/news/sap-ramps-push-autonomous-finance-agentic-ai/819929/\nGartner, via CFO Dive: https://www.cfodive.com/news/cfos-ai-adoption-slows-challenges-mount-gartner/805949/"
+    }
+  ],
+  "sources": [
+    "https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function",
+    "https://www.cfodive.com/news/sap-ramps-push-autonomous-finance-agentic-ai/819929/",
+    "https://www.cfodive.com/news/cfos-ai-adoption-slows-challenges-mount-gartner/805949/"
+  ]
+}
