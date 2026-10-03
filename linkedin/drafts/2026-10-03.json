@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-03",
+  "topic": "The AI-first finance function: ambition vs. operating reality",
+  "why_now": "BCG's 2026 \"AI-First Finance Function\" and EY's June 2026 DNA of the CFO survey landed this year alongside CFO Dive's reporting on HPE putting a named agentic tool at the center of its 2026 finance priorities, crystallizing a shift from AI-on-slides to AI-in-the-operating-model.",
+  "topic_candidates": [
+    {
+      "title": "The AI-first finance function: ambition vs. operating reality",
+      "why": "Authoritative BCG + EY + CFO Dive numbers converge, with a built-in counterpoint between near-universal ambition and low readiness.",
+      "source": "https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function"
+    },
+    {
+      "title": "SAP Joule becomes an agentic platform (40+ assistants, 200+ agents)",
+      "why": "Joule's 2026 evolution into autonomous end-to-end process execution plus the new unified SAP Business AI Platform is a concrete SAP roadmap shift.",
+      "source": "https://community.sap.com/t5/technology-blog-posts-by-members/joule-everywhere-breaking-down-sap-s-biggest-ai-announcements-from-sapphire/ba-p/14404234"
+    },
+    {
+      "title": "HPE's CFO names its agentic AI tool \"Alfred\" and makes it a 2026 priority",
+      "why": "A real-world CFO deployment (built with Deloitte, aimed at forecasting and AR) grounds the abstract agentic-finance debate.",
+      "source": "https://www.cfodive.com/news/hpe-cfo-puts-agentic-ai-center-2026-finance-priorities/812097/"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this week reading BCG's new work on what they call the AI-first finance function, and the line that stayed with me wasn't about agents or models. It was the old, slightly embarrassing statistic that finance teams still spend roughly 90% of their time producing numbers and only 10% advising the business. We've been promising to flip that ratio for twenty years. BCG's argument is that this time the tooling might actually be capable of it: they expect that within two to five years, leading organizations will run finance as an AI-first function, with staffing for routine workflows potentially falling by half.\n\nWhat I keep sitting with is the gap between that vision and where most teams actually are. EY's 2026 DNA of the CFO survey, published in June, found only 21% of CFOs describe their AI readiness as leading or advanced, and just 12% said their transformation over the past two years exceeded expectations. So the ambition is near-universal — 88% of CFOs told BCG that AI is essential or important — but the delivery clearly isn't.\n\nMy guess is that the real constraint isn't the technology. BCG's own 10-20-70 rule puts 70% of the value in people and process, not algorithms. Which means the hard part of an AI-first finance function was always going to be the least glamorous part: changing how decisions actually get made. I think the teams that get somewhere here will be the ones treating this as an operating-model problem, not a software purchase.\n\nBoth are worth the read:\nhttps://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function\nhttps://www.ey.com/en_us/insights/finance/dna-of-the-cfo-survey"
+    },
+    {
+      "style": "Analytical",
+      "text": "The case for an AI-first finance function usually arrives as a vision statement. I find the numbers more useful, and they tell a more honest story.\n\nStart with the problem. Despite decades of ERP investment, the average enterprise still takes seven to ten days to close its books each month, most of it spent on reconciliation and exception clearing — work done in a batch at period end rather than continuously. That's what agentic AI is aimed at, and the early gains are real if you read them carefully: deployments cited in CFO Dive and industry reporting point to roughly 35-40% faster closes and 60-80% less manual processing time.\n\nThen the ambition. BCG projects that within two to five years leading organizations will run an AI-first finance function, with staffing for routine workflows potentially halved, and notes that 96% of CFOs expect transformative impact from AI within five years.\n\nNow the reality check, which I think matters most. EY's 2026 DNA of the CFO survey found only 21% of functions rate their AI readiness as leading or advanced, and only 12% said their last two years of transformation exceeded expectations. BCG's own 10-20-70 framework explains the gap: 70% of the value is people and process, not the model.\n\nSo the honest read is that the ceiling is high and the floor is where most teams still stand. The technology is running ahead of the operating models, and closing that distance — not buying more software — looks like the real 2026 job.\n\nSources:\nhttps://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function\nhttps://www.ey.com/en_us/insights/finance/dna-of-the-cfo-survey\nhttps://www.cfodive.com/news/hpe-cfo-puts-agentic-ai-center-2026-finance-priorities/812097/"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me this week was a name: Alfred. That's what HPE's finance team calls the internal agentic AI tool it built with Deloitte, now pointed at forecasting and accounts receivable. CFO Dive reported the CFO is putting it at the center of 2026 finance priorities. Something about giving the agent a name — like a junior analyst who never sleeps — captures how the framing has quietly shifted from \"software we use\" to \"a colleague we supervise.\"\n\nWiden out and that shift is everywhere in this year's finance writing. BCG's piece on the AI-first finance function argues the CFO's job is moving from producing numbers to designing the system that produces them: the data fabric, the agent ecosystem, the thresholds that decide when a human gets pulled in. The familiar figure is that finance spends about 90% of its time making numbers and 10% advising; the whole bet is that agents like Alfred invert it.\n\nI'm a little wary of how tidy that story is. EY's 2026 DNA of the CFO survey found only 21% of functions consider their AI readiness advanced, and the average company still takes seven to ten days to close its books. A named agent on a slide is not the same as a changed close. But I think the naming instinct is telling. We manage people differently than we operate tools, and an AI-first finance function will need managers of agents more than users of them.\n\nWorth reading:\nhttps://www.cfodive.com/news/hpe-cfo-puts-agentic-ai-center-2026-finance-priorities/812097/\nhttps://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function"
+    }
+  ],
+  "sources": [
+    "https://www.bcg.com/publications/2026/the-artificial-intelligence-first-finance-function",
+    "https://www.ey.com/en_us/insights/finance/dna-of-the-cfo-survey",
+    "https://www.cfodive.com/news/hpe-cfo-puts-agentic-ai-center-2026-finance-priorities/812097/"
+  ]
+}
