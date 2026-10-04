@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-04",
+  "topic": "Finance's shift from AI copilots to autonomous agents — and why the real gap is governance, not capability",
+  "why_now": "Deloitte's latest CFO guide to tech trends and the State of AI in Finance 2026 report both frame 2026 as the year the finance conversation moves from copilots to agents, right as Gartner's cutoff for task-specific agents in enterprise software arrives.",
+  "topic_candidates": [
+    {
+      "title": "Finance moves from AI copilots to autonomous agents — governance is the bottleneck",
+      "why": "Number-grounded and squarely on the finance pillar: adoption doubling yet finance last to deploy, with a credible counterpoint on cancelled agent projects.",
+      "source": "https://www.deloitte.com/us/en/what-we-do/capabilities/finance-transformation/articles/cfo-guide-to-tech-trends.html"
+    },
+    {
+      "title": "SAP's Joule for Developers ABAP agentic capabilities are now generally available",
+      "why": "Fresh, concrete SAP-pillar news as ABAP tooling shifts from independent AI skills to full agentic workflows.",
+      "source": "https://community.sap.com/t5/artificial-intelligence-blogs-posts/sap-joule-for-developers-abap-ai-capabilities-including-agentic/ba-p/14417633"
+    },
+    {
+      "title": "Enterprise AI agents cross from pilot to production",
+      "why": "Microsoft reports 365 active AI agents up ~15x year-over-year and 4 in 10 orgs now run agents in production — a clear adoption-curve inflection.",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-evolve-enterprise-adoption-security-and-new-capabilities-emerge"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this week reading about where AI actually sits in the finance function, and the thing I keep turning over is how deliberately slow finance has been — and whether that's a flaw or, for once, the right instinct.\n\nThe State of AI in Finance 2026 report has daily AI use among finance leaders roughly doubling each year: 17% in 2023, 31% in 2024, 56% now. That sounds fast, until you notice the same report puts finance last among business functions for real deployment, around 40%, against 92% in engineering. We talk about it more than we ship it.\n\nWhat's shifting, in Deloitte's latest CFO guide to tech trends, is the move from copilots to agents. A copilot suggests and then waits for you; an agent plans toward a goal, picks its tools, executes, and reports back. For a close or a reconciliation, that's a genuinely different thing — and a different kind of risk.\n\nHere's my hesitation. Deloitte cites Gartner expecting agentic AI to make 15% of everyday work decisions by 2028, while also forecasting that over 40% of agentic AI projects get canceled by end of 2027. Both can be true. My guess is that the finance teams who win won't be the fastest to deploy; they'll be the ones who used a small first agent to test governance — traceability, review, control — before letting one near the ledger.\n\nFinance being cautious here might not be slowness. It might be the point.\n\nBoth reports are worth the time:\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/\nhttps://www.deloitte.com/us/en/what-we-do/capabilities/finance-transformation/articles/cfo-guide-to-tech-trends.html"
+    },
+    {
+      "style": "Analytical",
+      "text": "The numbers on AI in finance only make sense when you read them against each other.\n\nStart with adoption. The State of AI in Finance 2026 report puts daily AI use among finance leaders at 56%, up from 31% a year earlier and 17% in 2023 — roughly doubling annually. Impressive in isolation. Then set it beside the cross-functional picture in the same report: finance sits last among business functions at about 40% deployment, while engineering is near 92%. Finance is accelerating and trailing at the same time.\n\nThe more interesting shift is in kind, not degree. Deloitte's CFO guide to tech trends frames 2026 as the year the finance conversation moves from copilots, which suggest, to agents, which execute. Deloitte cites Gartner expecting agentic AI to make 15% of everyday work decisions and augment a third of enterprise software by 2028.\n\nBut the counter-number matters more than the headline. Deloitte also cites Gartner's forecast that over 40% of agentic AI projects will be canceled by end of 2027 — echoing the roughly 30% of generative AI projects already abandoned by 2025 for unclear value.\n\nSo what does this mean in practice? I read it as a caution against treating agent deployment as a race. The binding constraint in finance isn't model capability; it's integration, data quality, and governance — the unglamorous layer. My read is that the distance between a demo and a production agent is mostly the controls you build around it, and that's exactly where the cancelled projects will cluster.\n\nSources:\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/\nhttps://www.deloitte.com/us/en/what-we-do/capabilities/finance-transformation/articles/cfo-guide-to-tech-trends.html"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me this week was a distinction that runs through the current finance-AI coverage, sharpest in Deloitte's CFO guide to tech trends: a copilot answers when you ask, but an agent plans toward a goal, chooses its tools, executes, and reports back. One waits for you. The other comes back to you.\n\nIt sounds like a small semantic point, but it reframes the whole automation conversation. When your month-end close or your reconciliations are run by something that acts first and then tells you what it did, the question stops being \"is the output good?\" and becomes \"can I trace what it did, and could I have stopped it in time?\"\n\nThat lands differently next to the adoption data. The State of AI in Finance 2026 report has daily AI use among finance leaders at 56%, doubling year over year — yet finance remains the lowest-deploying function, near 40%, well behind engineering at 92%. Finance has been the cautious one.\n\nI used to read that caution as finance simply being slow. Now I'm less sure. Deloitte, citing Gartner, notes that over 40% of agentic AI projects may be canceled by end of 2027. In a function where a wrong number isn't a bad user experience but a restatement, \"reports back\" is a property you have to earn with governance before you trust it. My guess is that the teams moving carefully now will look fast in three years.\n\nWorth reading in full:\nhttps://www.deloitte.com/us/en/what-we-do/capabilities/finance-transformation/articles/cfo-guide-to-tech-trends.html\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+    }
+  ],
+  "sources": [
+    "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/",
+    "https://www.deloitte.com/us/en/what-we-do/capabilities/finance-transformation/articles/cfo-guide-to-tech-trends.html",
+    "https://www.houseblend.io/articles/ai-agents-finance-cfo-guide-2026"
+  ]
+}
