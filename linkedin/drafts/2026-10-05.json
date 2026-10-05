@@ -1,0 +1,40 @@
+{
+  "date": "2026-10-05",
+  "topic": "The agentic AI governance gap — and why finance is the function best placed to close it",
+  "why_now": "KPMG's Q3 2026 AI Pulse survey (fielded July–August, released late September) shows agent deployment jumping from 53% to 62% in a single quarter even as governance tooling scrambles to keep up, while a fresh CFO Connect report ranks finance last among all functions for AI adoption.",
+  "topic_candidates": [
+    {
+      "title": "Agents are scaling faster than the guardrails — and finance owns the decision rights",
+      "why": "Agent deployment rose 53%→62% in one quarter per KPMG Q3 2026, with governance (cost reviews, dashboards) racing to catch up — and defining human-vs-machine decision rights is native finance work.",
+      "source": "https://kpmg.com/us/en/media/news/q3-ai-pulse-2026.html"
+    },
+    {
+      "title": "Finance is the lowest-adopting function for AI in 2026",
+      "why": "CFO Connect's State of AI in Finance puts finance last among departments (~40% deployment vs 92% for engineering), with only 4% ranking AI governance as a priority skill.",
+      "source": "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+    },
+    {
+      "title": "Joule Everywhere: SAP consolidates BTP, Business Data Cloud and AI Foundation into one agentic layer",
+      "why": "At Sapphire 2026 SAP unified its AI stack around a Knowledge Graph and moved Joule for Developers to agentic ABAP capabilities, now GA across S/4HANA editions.",
+      "source": "https://community.sap.com/t5/technology-blog-posts-by-members/joule-everywhere-breaking-down-sap-s-biggest-ai-announcements-from-sapphire/ba-p/14404234"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep coming back to a small tension between two reports I read this week. KPMG's Q3 AI Pulse survey says 62% of organizations are now building or deploying AI agents, up from 53% just a quarter earlier. In the same breath, the governance numbers are climbing too: 74% now run cost reviews before approving AI, up from 61%, and 70% have monitoring dashboards. On paper, scale and oversight are moving together.\n\nThen I read CFO Connect's State of AI in Finance report, where finance comes out as the lowest-adopting function of all — behind engineering, IT, even operations — and only 4% of finance leaders rank AI governance as a skill worth building.\n\nThat gap is what I can't stop thinking about. The function most fluent in controls and audit trails is the slowest to put agents to work, while the fastest movers are racing ahead and bolting governance on afterward. I think finance is actually well placed here — deciding who gets to decide, humans or machines, is really just internal controls in new clothing. My guess is the CFOs who treat agent governance as their own job, not IT's, end up with faster safe adoption, not slower. Though it's early, and I might be reading my own bias into it.\n\nBoth reports are worth the time:\nhttps://kpmg.com/us/en/media/news/q3-ai-pulse-2026.html\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The number that reframes the agent conversation for me is the jump from 53% to 62% in a single quarter. That's KPMG's Q3 AI Pulse survey on how many organizations are now building, deploying or developing AI agents. Nine points in three months isn't a pilot curve, it's a scaling curve — and the share actively building multi-agent systems moved from 6% to 25%.\n\nWhat makes it more than a headline is what moved alongside it. Cost reviews in AI approvals rose to 74% from 61%, 70% now run monitoring dashboards, and 43% have set explicit usage or token budgets. KPMG's read is that governance and adoption are climbing together rather than trading off, and the data broadly supports that.\n\nThe caveat sits one report over. CFO Connect's State of AI in Finance puts the finance function last among all departments for AI deployment, at roughly 40% against 92% for engineering. So the aggregate 62% is being carried by functions that aren't finance. For a CFO, that's the actionable part: the infrastructure agents need — approval gates, cost visibility, clear decision rights between people and systems — is finance's native language. The constraint isn't capability, it's whether finance leads the governance or inherits it.\n\nMy one hesitation: self-reported governance maturity usually runs ahead of reality. Still, the direction is clear enough.\n\nhttps://kpmg.com/us/en/media/news/q3-ai-pulse-2026.html\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me was a single line in CFO Connect's State of AI in Finance report: when finance leaders were asked which skills matter most, AI governance and compliance came in dead last at 4%. Workflow automation got 56%.\n\nI understand the instinct — everyone wants back the time the close eats. But that ranking reads oddly next to what's happening one layer up. KPMG's Q3 AI Pulse survey has 62% of organizations now building or deploying AI agents, up from 53% a quarter earlier, with monitoring dashboards and cost reviews spreading quickly to keep pace. The market is quietly deciding that the hard part of agents isn't getting them to act — it's governing what they're allowed to decide.\n\nWiden the lens and the irony sharpens. Finance is the function best equipped for exactly that work — segregation of duties, approval thresholds, audit trails — and also the slowest to adopt AI at all, last among departments in the same report. The capability finance already owns is the one everyone else is scrambling to build.\n\nI don't think this means finance should chase every agent. I think it means governing agents is a seat finance can take without inventing anything new. Whether it wants the seat is the open question.\n\nhttps://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/\nhttps://kpmg.com/us/en/media/news/q3-ai-pulse-2026.html"
+    }
+  ],
+  "sources": [
+    "https://kpmg.com/us/en/media/news/q3-ai-pulse-2026.html",
+    "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+  ]
+}
