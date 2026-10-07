@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-07",
+  "topic": "The gap between experimenting with AI agents and running them in production",
+  "why_now": "October brought a wave of agent 'orchestration' and governance launches (Microsoft's Copilot Studio Hooks, SAP's Joule agentic work layer) just as fresh McKinsey and Gartner data show scaling is real but narrow and largely self-reported.",
+  "topic_candidates": [
+    {
+      "title": "The experiment-to-production gap in enterprise AI agents",
+      "why": "New McKinsey/Gartner numbers plus an October wave of orchestration tooling show the bottleneck has shifted from capability to trust and control.",
+      "source": "https://www.digitalapplied.com/blog/ai-agent-adoption-2026-enterprise-data-points"
+    },
+    {
+      "title": "SAP Joule for Developers ABAP agentic capabilities hit general availability at SAP Connect 2026",
+      "why": "SAP delivered on its Sapphire 'Autonomous Enterprise' promises this month with agentic ABAP across S/4HANA Cloud and BTP.",
+      "source": "https://community.sap.com/t5/artificial-intelligence-blogs-posts/sap-joule-for-developers-abap-ai-capabilities-including-agentic/ba-p/14417633"
+    },
+    {
+      "title": "AI in finance is growing fast yet still the least-deployed business function",
+      "why": "2026 surveys show finance AI adoption roughly doubling since 2023 while finance remains the lowest-deployment function, exposing the governance-versus-speed tension for CFOs.",
+      "source": "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026/"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this week reading about enterprise AI agents, and what stayed with me wasn't a breakthrough — it was a correction.\n\nA DigitalApplied piece walked through the 2026 adoption numbers and then did something I rarely see: it withdrew several of its own earlier claims. The tidy tables on pilot-failure rates and payback periods were pulled, with a note that the \"claimed statistical collection has been withdrawn.\" What's left is more honest and more useful. McKinsey's late-August survey of 1,719 leaders found about 40% of large organisations (over $1B in revenue) now scaling agents in at least one function — but the authors are careful to call these respondent reports, not audited deployments. Gartner's much-quoted \"40% of enterprise applications\" figure turns out to be a forecast for end-2026 against a sub-5% baseline, not something measured.\n\nI think that gap — between what we say is happening and what is verifiably happening — is the real story of this moment. It also explains the October product wave: Microsoft adding \"Hooks\" to Copilot Studio so agents don't have to make judgment calls about when to act, SAP pushing Joule into a full agentic work layer. The industry has moved from \"can agents do the task\" to \"can we trust the orchestration around them.\" That feels like maturity, not hype.\n\nMy guess is the teams that win won't be the ones with the most agents, but the ones who can say precisely which ones are in production, and why.\n\nThe reading, if useful:\nhttps://www.digitalapplied.com/blog/ai-agent-adoption-2026-enterprise-data-points\nhttps://aiagentsdirectory.com/news/ai-agents-news-brief-october-6-2026"
+    },
+    {
+      "style": "Analytical",
+      "text": "It's worth being precise about where enterprise AI agents actually are, because the headline numbers and the measured ones have drifted apart.\n\nThe most-cited figure — Gartner's projection that task-specific agents will reach 40% of enterprise applications — is a forecast for the end of 2026, up from a baseline below 5% in 2025. It's a trajectory, not a count. The firmest data point I found is McKinsey's survey fielded in May–June and published 25 August: across 1,719 respondents weighted by GDP, roughly 40% of large organisations (over $1B revenue) report scaling agents in at least one function, falling to about 22% at smaller firms. McKinsey flags these as self-reported, not audited.\n\nNotably, one analysis I read (DigitalApplied) retracted its own tables on pilot-failure rates and payback medians, writing that the \"claimed statistical collection has been withdrawn.\" I find that more credible than confident precision.\n\nSo the honest read: scaling is real but concentrated in large firms, one function at a time, and clean production numbers don't really exist yet. Which is exactly why this month's launches target orchestration rather than raw capability — Microsoft's \"Hooks\" in Copilot Studio to constrain when agents act, SAP folding Joule into an agentic work layer under its Autonomous Enterprise governance. The binding constraint now is trust and coordination, not model skill. My read is that 2027's useful metric won't be how many agents a company has, but how many it can actually audit.\n\nSources:\nhttps://www.digitalapplied.com/blog/ai-agent-adoption-2026-enterprise-data-points\nhttps://aiagentsdirectory.com/news/ai-agents-news-brief-october-6-2026"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me: Microsoft named its newest Copilot Studio feature \"Hooks,\" and its stated purpose is to stop agents from having to make judgment calls about when a workflow should start.\n\nSit with that for a second. We spent two years marvelling that agents could reason their way through open-ended tasks, and now one of the headline enterprise features of October is a mechanism to let them reason less — to hand the \"when\" back to deterministic rules. SAP's move the same week fits the pattern: Joule is being pushed into a full agentic work layer wrapped in its Autonomous Enterprise governance, not simply handed more autonomy.\n\nIt maps onto the numbers, too. McKinsey's August survey put about 40% of large organisations (over $1B revenue) scaling agents in at least one function — real, but self-reported and narrow. And one widely shared adoption analysis actually withdrew its own tables on failure rates, admitting the \"statistical collection has been withdrawn.\" The quiet admission underneath all of it is that capability was never really the bottleneck. Control was.\n\nI think that's a healthy turn, even if it reads as less exciting. The interesting work in 2027 probably won't be making agents smarter. It'll be making them predictable enough to trust with something that matters.\n\nSources worth a look:\nhttps://aiagentsdirectory.com/news/ai-agents-news-brief-october-6-2026\nhttps://www.digitalapplied.com/blog/ai-agent-adoption-2026-enterprise-data-points"
+    }
+  ],
+  "sources": [
+    "https://www.digitalapplied.com/blog/ai-agent-adoption-2026-enterprise-data-points",
+    "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-6-2026",
+    "https://community.sap.com/t5/artificial-intelligence-blogs-posts/sap-joule-for-developers-abap-ai-capabilities-including-agentic/ba-p/14417633",
+    "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026/"
+  ]
+}
