@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-17",
+  "topic": "Finance teams now spend a quarter of their week fact-checking AI",
+  "why_now": "Datarails' 2026 CFO Sentiments survey (released early October) landed in the same month SAP declared the 'Autonomous Enterprise' generally available, making the gap between autonomy ambition and verification reality unusually visible.",
+  "topic_candidates": [
+    {
+      "title": "Finance teams spend ~26% of their week verifying or correcting AI output (Datarails 2026 CFO Sentiments)",
+      "why": "Fresh, specific, counterintuitive — automation created a second job instead of removing one; auditability is the #1 trust barrier.",
+      "source": "https://www.datarails.com/cfo-survey-ai-finance/"
+    },
+    {
+      "title": "SAP declares the 'Autonomous Enterprise' GA at SAP Connect, rolls Joule Work to 110,000 of its own staff",
+      "why": "Major vendor milestone with a concrete internal data point (claimed 20% productivity gains in finance/HR/procurement).",
+      "source": "https://news.sap.com/2026/10/sap-connect-sap-puts-autonomous-enterprise-to-work/"
+    },
+    {
+      "title": "86% of B2B buyers bought AI-agent software this year but only 17% have deployed",
+      "why": "Quantifies the pilot-to-production gap that explains why verification burden is rising.",
+      "source": "https://www.hpcwire.com/aiwire/2026/10/14/the-future-of-enterprise-ai-isnt-a-super-agent-its-an-agentic-workforce/"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep coming back to one finding from Datarails' 2026 CFO Sentiments survey this week, and it's quietly reframing how I think about AI in finance. Finance teams, it reports, now spend about a quarter of their working week verifying or correcting the output of their AI tools. Ninety-six percent spend at least a tenth of the day on it; for roughly a third, it eats between a quarter and half the day.\n\nWhat stays with me isn't the number so much as the shape of it. We talked about automation as time given back. What seems to have arrived instead, at least for now, is a new kind of work — reviewing, reconciling, deciding whether to trust. The survey puts auditability at the top of the trust gap, ahead of accuracy and compliance, which rings true to me: finance has never really been allowed to say 'the model said so.'\n\nI don't read this as AI failing. My guess is it's what an honest early phase looks like — the tool is fast, the accountability is still human, and nobody has fully redesigned the controls around that. The irony is sharp given SAP spent the same month declaring the 'Autonomous Enterprise' generally available. Autonomy is being sold; verification is what's actually being lived.\n\nThe interesting question, I think, is whether that quarter-of-a-week shrinks as teams learn where to trust, or whether checking the machine just becomes the job. Too early to know.\n\nThe write-ups are worth the read:\nhttps://www.datarails.com/cfo-survey-ai-finance/\nhttps://cfo.com/news/76-of-finance-leaders-under-high-pressure-to-fully-implement-ai/832784"
+    },
+    {
+      "style": "Analytical",
+      "text": "The headline from Datarails' 2026 CFO Sentiments survey is that 76% of finance leaders feel high or very high pressure to fully implement AI. The number I'd actually plan around sits lower in the report: finance teams are spending roughly 26% of their working week verifying or correcting AI output. Ninety-six percent spend at least 10% of the day on it; 56% land in the 10–25% band, 32% in the 26–50% band.\n\nIt's worth being precise about what this is and isn't. The sample is 270 US CFOs and finance leaders at firms with 1,000+ employees and $100M+ revenue — not small shops, and self-reported. So treat the exact percentages as directional. But the direction is the point. The stated reasons for not trusting AI with mission-critical tasks are lack of auditability (75%), accuracy and hallucination risk (71%), and compliance (54%), and the survey notes that teams running disconnected systems check more. That lines up: verification cost is partly a data-architecture problem wearing an AI costume.\n\nThe measured read, I think, is that these tools are shifting labor rather than removing it — from preparing numbers to adjudicating them. Whether that's a transition cost or a steady state depends on whether auditability improves faster than adoption pressure, and right now pressure is clearly winning. CFO Dive and Inc. both covered the finding:\nhttps://cfo.com/news/76-of-finance-leaders-under-high-pressure-to-fully-implement-ai/832784\nhttps://www.inc.com/yael-bizouati-kennedy/automation-save-time-finance-teams-cfo-survey-data-ai-efficiency-productivity/91419595"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me was a single band in Datarails' 2026 CFO Sentiments survey: 32% of finance professionals say they spend between a quarter and half of their day verifying or correcting what their AI tools produce. Not glancing at it — checking it, the way you'd check a junior analyst's first model.\n\nSit with that one line and the bigger picture falls into place. Across the survey, teams spend about 26% of the week on this, and 96% spend at least 10% of the day. The tool that was supposed to hand time back has, for a sizeable group, handed them a second job instead — which is roughly how Inc. framed it, and I don't think that's hyperbole.\n\nWiden out and it starts to look less like an AI problem than a trust-and-plumbing problem. The top reason CFOs won't fully hand over mission-critical work is auditability (75%), and the survey found that teams on disconnected systems spend the most time checking. When you can't trace how an answer was built, you re-derive it. That's not fear of AI; it's finance behaving exactly as finance is supposed to.\n\nSo my takeaway isn't 'AI disappoints.' It's that the bottleneck has quietly moved from producing the number to being able to stand behind it — and the vendors selling 'autonomy' this quarter are a step ahead of where the trust actually is.\n\nhttps://www.datarails.com/cfo-survey-ai-finance/\nhttps://www.inc.com/yael-bizouati-kennedy/automation-save-time-finance-teams-cfo-survey-data-ai-efficiency-productivity/91419595"
+    }
+  ],
+  "sources": [
+    "https://www.datarails.com/cfo-survey-ai-finance/",
+    "https://cfo.com/news/76-of-finance-leaders-under-high-pressure-to-fully-implement-ai/832784",
+    "https://www.inc.com/yael-bizouati-kennedy/automation-save-time-finance-teams-cfo-survey-data-ai-efficiency-productivity/91419595",
+    "https://news.sap.com/2026/10/sap-connect-sap-puts-autonomous-enterprise-to-work/",
+    "https://www.hpcwire.com/aiwire/2026/10/14/the-future-of-enterprise-ai-isnt-a-super-agent-its-an-agentic-workforce/"
+  ]
+}
