@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-18",
+  "topic": "Finance teams now spend 26% of their week verifying AI output (Datarails 2026 CFO survey)",
+  "why_now": "Datarails' survey of 270 CFOs landed this month (CFO Dive, Oct 6) and quantifies for the first time how much of finance's week is being eaten by a new 'verification burden.'",
+  "topic_candidates": [
+    {
+      "title": "Finance's AI 'verification burden': 26% of the week spent checking AI",
+      "why": "Fresh, concrete, counterintuitive — automation created a second job rather than saving time.",
+      "source": "https://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/"
+    },
+    {
+      "title": "SAP puts the 'autonomous enterprise' to work at SAP Connect",
+      "why": "SAP says it runs Joule Work internally across 110,000 employees with 20% productivity gains; broad rollout now.",
+      "source": "https://news.sap.com/2026/10/sap-connect-sap-puts-autonomous-enterprise-to-work/"
+    },
+    {
+      "title": "Enterprise AI-agent governance becomes a funded category",
+      "why": "Opsin raised $21M to monitor company-built agents after finding 93% of misaligned agents had unrestricted system access.",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-17-2026"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "There's a line in the Datarails survey that CFO Dive wrote up this month that I haven't been able to shake: finance teams now spend about a quarter of their working week — 26% — verifying or correcting what AI hands them. The survey polled 270 CFOs and finance leaders at large US companies in July, and 96% of them said they spend at least a tenth of their time checking the machine's work.\n\nWhat strikes me isn't that the number exists. Of course you check the output before you sign the accounts. It's what the number quietly says about where we are. We adopted these tools to buy back time, and for a lot of finance functions the time came back wearing a different hat. Inc. called it a second job, which feels about right.\n\nI think the honest read is more nuanced than 'AI failed finance.' Verification isn't pure waste — in a function where 75% named lack of auditability as the thing holding them back, checking the output is partly how trust gets built in real time. My guess is this is a transition cost, not a permanent tax. The teams that write down what they're checking and why will turn today's manual review into tomorrow's control. The ones who don't will just be slower.\n\nStill worth sitting with the gap it exposes: 76% feel high pressure to roll AI out, and only 7% feel fully ready.\n\nBoth write-ups are worth the read:\nhttps://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/\nhttps://www.datarails.com/cfo-survey-ai-finance/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The headline from the new Datarails survey is that finance teams spend 26% of their week verifying AI output. Averages hide the shape, though, and here the shape is the story. Of the 270 CFOs and finance leaders polled in July, 96% spend at least 10% of their time checking AI: 56% land in the 10–25% band, 32% in the 26–50% band, and 8% spend more than half their working time on review. So the 'quarter of the week' average is really a long right tail — roughly a third of finance functions now spend between a quarter and half their time as human validators.\n\nSet that against two other figures in the same study, as CFO Dive did, and it reads less like a paradox and more like a sequencing problem. 75% cite lack of auditability as their main reason not to trust AI with mission-critical work, while 76% report high pressure to deploy it anyway and only 7% call themselves fully ready. Pressure is running well ahead of readiness, and verification time is simply that gap made visible.\n\nI don't think that's inherently bad. Review cost is what you pay before controls exist, and it should fall as audit trails, confidence scoring, and narrow deployment mature. The real risk is treating 26% as a steady state rather than a signal to fix the inputs. If that number isn't trending down a year from now, the tooling — not the team — is the problem.\n\nFigures via CFO Dive and Datarails:\nhttps://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/\nhttps://www.datarails.com/cfo-survey-ai-finance/"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me was 8%. Buried in the new Datarails survey — the one CFO Dive summarized with the line that finance teams now spend 26% of their week checking AI — is a smaller figure: 8% of the 270 finance leaders polled say they spend more than half their working time verifying or correcting what the tools produce.\n\nPicture that person's week. More than half of it now goes to reading the machine's homework. They almost certainly brought the tools in to escape exactly that kind of work.\n\nWiden the lens and the 8% stops looking like an edge case and starts looking like a direction of travel. 96% of respondents spend at least a tenth of their time on verification, and 75% say the thing stopping them from trusting AI with serious finance work is that they can't audit it. The outliers are just the leading edge of a function being asked to deploy faster than it can build the controls that would let it stop double-checking — 76% feel the pressure, 7% feel ready.\n\nMy hunch is the 8% shrinks as auditability improves, and the people doing heavy manual review today become the ones who design the controls that replace it. Or it doesn't shrink, and we quietly accept that these tools need a permanent chaperone in finance. Either way, that's the number I'd watch.\n\nBoth pieces are worth it:\nhttps://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/\nhttps://www.inc.com/yael-bizouati-kennedy/automation-save-time-finance-teams-cfo-survey-data-ai-efficiency-productivity/91419595"
+    }
+  ],
+  "sources": [
+    "https://www.cfodive.com/news/ai-verification-eats-26percent-finance-teams-workweek-datarails/832210/",
+    "https://www.datarails.com/cfo-survey-ai-finance/",
+    "https://www.inc.com/yael-bizouati-kennedy/automation-save-time-finance-teams-cfo-survey-data-ai-efficiency-productivity/91419595"
+  ]
+}
