@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-02",
+  "topic": "The finance AI execution-governance gap: broad deployment, thin agent integration",
+  "why_now": "Deloitte's 2026 Finance Trends survey and 4Q25 CFO Signals, surfaced again in coverage this autumn, quantify a widening gap between finance teams that have deployed AI and the few that have actually integrated agents into the function.",
+  "topic_candidates": [
+    {
+      "title": "Finance's AI execution-governance gap (63% deployed, 14% integrated)",
+      "why": "Verified Deloitte numbers that name the real bottleneck as governance and data, not models",
+      "source": "https://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/"
+    },
+    {
+      "title": "SAP Connect 2026: Joule Work and the 'autonomous enterprise'",
+      "why": "Fresh October launch expanding Joule across every line of business, most capabilities landing Q4 2026–Q1 2027",
+      "source": "https://news.sap.com/2026/10/sap-connect-sap-puts-autonomous-enterprise-to-work/"
+    },
+    {
+      "title": "OpenAI GPT-6.1 Terra and a 50% price cut for agentic computer-use",
+      "why": "Late-October release that pushes down the cost of the exact workloads enterprises are piloting",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-news-brief-october-27-2026"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep returning to one pair of numbers from Deloitte's 2026 Finance Trends survey. Sixty-three percent of finance teams say they have fully deployed AI. Only fourteen percent say they have actually integrated AI agents into the finance function itself. I read that gap a few times before it settled.\n\nMy first instinct was to call it a disappointment. On reflection I'm not sure it is. Deploying a tool and handing a process to an agent are genuinely different acts. One adds a capability; the other redraws who, or what, is accountable for a close, an accrual, a payment run. Deloitte's own framing is that governance and data controls simply haven't kept pace with the ambition to deploy, and that rings true to me. The harder problem was never the model.\n\nWhat strikes me is that only 21% of those who deployed believe the investment delivered tangible value yet. I think that's less a verdict on the technology than a sign of how early we are in learning to supervise it. My guess is the teams that close the gap won't be the ones with the best models, but the ones who got clear, early, about decision rights between people and machines.\n\nThe CFO Dive write-up of the Deloitte work is worth the read:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The useful signal in Deloitte's 2026 Finance Trends survey isn't the enthusiasm, it's the spread. Across 1,326 finance leaders, 87% expect AI to be very or extremely important to operations this year, and 54% name integrating AI agents as a top transformation priority. Then the numbers narrow sharply: 63% report AI fully deployed, but only 14% have integrated agents into the finance function, and just 21% of deployers say they've seen tangible value so far.\n\nRead together, that's a classic adoption curve stalling at the hard part. The first 63% is mostly tooling layered onto existing work. The 14% is where accountability actually moves, and that's where governance and data controls become the binding constraint rather than model quality. It lines up with Gartner's long-running argument that data readiness, not model selection, limits enterprise agent deployments.\n\nThe counterpoint worth holding: a 14% integration rate in year one of serious agent availability isn't obviously slow. Measured against how long ERP or RPA took to embed, it may be ahead of schedule. The number I'd watch next year isn't deployment, which will approach saturation, but whether that 21% value figure moves. That's the one that tells you integration is working.\n\nSources:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/\nhttps://www.gartner.com/en/articles/ai-finance-transformation"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me from Deloitte's 2026 Finance Trends survey was small and easy to skim past: of the finance teams that have fully deployed AI, only 21% believe the investment has delivered tangible value so far.\n\nSit with that for a second. These are not the skeptics on the sidelines. They bought, rolled out, and are actively using the tools, and roughly four in five still can't point to a clear return. It's tempting to read that as failure. I don't think it is. I think it's the ordinary shape of the middle of an adoption curve, where the cost is real and the payoff is still being learned.\n\nWiden out and the rest of the data makes more sense. The same survey finds 63% have deployed AI but only 14% have integrated agents into the finance function, with governance and data controls named as the lag. Value tends to show up on the far side of integration, not deployment. Deploying is buying a capability; integrating is trusting it with a decision. The second is slower on purpose, and in finance it probably should be.\n\nMy takeaway is patience with a deadline: the teams that convert deployment into value will be the ones treating governance as the product, not the paperwork. CFO Dive's summary of the Deloitte findings is a good starting point:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/"
+    }
+  ],
+  "sources": [
+    "https://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/",
+    "https://www.deloitte.com/us/en/about/press-room/finance-trends-2026-survey-release.html",
+    "https://www.gartner.com/en/articles/ai-finance-transformation"
+  ]
+}
