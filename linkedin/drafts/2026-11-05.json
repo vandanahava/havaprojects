@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-05",
+  "topic": "The pilot-to-production gap in financial services multi-agent AI",
+  "why_now": "Capgemini's World Cloud Report for Financial Services, published November 5, shows 59% of financial institutions piloting multi-agent AI but only 10% achieving enterprise-wide orchestration.",
+  "topic_candidates": [
+    {
+      "title": "Financial services' multi-agent AI gap: 59% piloting, 10% orchestrated",
+      "why": "Fresh (Nov 5), finance-specific, and carries its own counterpoint — the distance between demo and production.",
+      "source": "https://www.capgemini.com/news/press-releases/financial-institutions-accelerate-transition-to-multi-agent-ai-in-drive-for-bottom-line-value/"
+    },
+    {
+      "title": "Menlo Ventures: enterprise AI spend hits $177B, up 5.4x in a year",
+      "why": "Number-rich snapshot of agents becoming the dominant token consumers; published Nov 3.",
+      "source": "https://www.readsignal.io/article/menlo-ventures-2026-state-enterprise-ai-177b-agents"
+    },
+    {
+      "title": "SAP Sapphire 2026: the 'Autonomous Enterprise' with 50+ Joule assistants",
+      "why": "SAP ships 200+ specialized agents embedded across Finance and Spend, moving agentic AI from roadmap to GA.",
+      "source": "https://community.sap.com/t5/technology-blog-posts-by-sap/sap-sapphire-2026-announcements-only/ba-p/14396190"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent some time with Capgemini's new World Cloud Report for Financial Services this week, and the number that stayed with me wasn't the headline one. Yes, 59% of financial institutions are now piloting or deploying multi-agent AI — that's the figure that will travel. But sitting just beneath it is a quieter one: only 10% have reached enterprise-wide orchestration, and just 5% have truly institutionalized these systems at scale.\n\nThat gap is the whole story, I think. It's the familiar distance between a demo that works and a process you'd trust to run the bank. What struck me is that roughly half the firms surveyed still can't consistently show ROI on their agentic initiatives — not because the technology fails, but because the hard parts are organizational: data, governance, deciding who owns the outcome when a machine makes the call.\n\nThe detail I keep turning over is how these projects get funded. Capgemini found that by 2028 the share of executives naming business outcomes as their primary funding criterion is set to rise 141%, while a pure-efficiency focus drops. My guess is that's the real maturation signal — moving from 'look what it can do' to 'show me what it changed.' It's early days, and a survey of 1,100 executives captures intent as much as reality. But the honest read is that the pilots are easy now. The orchestration is where the next few years actually get spent.\n\nThe report is worth a read: https://www.capgemini.com/news/press-releases/financial-institutions-accelerate-transition-to-multi-agent-ai-in-drive-for-bottom-line-value/"
+    },
+    {
+      "style": "Analytical",
+      "text": "The useful way to read Capgemini's new World Cloud Report for Financial Services, which surveyed 1,100 C-suite executives across 14 markets, is as a snapshot of a gap rather than a race. 59% of financial institutions are piloting or deploying multi-agent AI. But only 10% have achieved enterprise-wide orchestration, and 5% have institutionalized it at scale. The spread between 'we have agents running somewhere' and 'agents run across the enterprise' is roughly six to one.\n\nThat ratio matters more than the adoption headline. It tells you most of the value is still theoretical: about half of firms say they can't consistently demonstrate ROI on agentic initiatives. The binding constraint isn't model quality. It's orchestration — getting agents to coordinate across functions reliably enough to trust with underwriting, servicing, or a loan decision.\n\nTwo numbers hint at where the discipline is heading. 90% of firms are using or planning intelligent model routing to manage token costs, which reads to me like finance treating inference as a line item to optimize rather than a magic budget. And by 2028, the share of executives naming outcomes as their primary funding criterion is projected to rise 141%, while efficiency-first framing falls.\n\nThe counterpoint worth holding: surveys measure stated intent, and 2028 projections are soft. But if that orchestration figure climbs even toward 25% over the next two years, that's the signal to watch — not the pilot count.\n\nSource: https://www.capgemini.com/news/press-releases/financial-institutions-accelerate-transition-to-multi-agent-ai-in-drive-for-bottom-line-value/"
+    },
+    {
+      "style": "Observation",
+      "text": "The small detail that stuck with me in Capgemini's new financial services report was this: 90% of firms are using or planning 'intelligent model routing' to manage token costs. Not a grand strategy line — a plumbing decision. Route the cheap queries to a small model, the hard ones to a frontier model, and watch the bill.\n\nI find that oddly reassuring, because it's what adoption looks like when it stops being a press release and starts being an operating cost. Finance functions are doing to AI what they do to everything: turning it into a line item to optimize.\n\nWiden out and the rest of the report fits that frame. 59% of institutions are piloting or deploying multi-agent AI, but only 10% have reached enterprise-wide orchestration and 5% have institutionalized it at scale. Roughly half still can't consistently show ROI. The agents work in a corner; coordinating them across underwriting, servicing and payments is the unsolved part.\n\nWhat I think the routing detail foreshadows is the funding shift Capgemini flags: by 2028, far more executives expect to fund these projects on business outcomes than on raw efficiency. It's early, and a survey of 1,100 executives is intent more than proof. But when a bank starts optimizing its token bill, it has quietly decided the technology is here to stay — and that the real work now is governance and orchestration, not the demo.\n\nThe report: https://www.capgemini.com/news/press-releases/financial-institutions-accelerate-transition-to-multi-agent-ai-in-drive-for-bottom-line-value/"
+    }
+  ],
+  "sources": [
+    "https://www.capgemini.com/news/press-releases/financial-institutions-accelerate-transition-to-multi-agent-ai-in-drive-for-bottom-line-value/",
+    "https://itbrief.co.uk/story/financial-firms-race-to-deploy-multi-agent-ai-systems"
+  ]
+}
