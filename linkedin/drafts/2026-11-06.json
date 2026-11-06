@@ -1,0 +1,40 @@
+{
+  "date": "2026-11-06",
+  "topic": "The AI value gap in finance: deployment is everywhere, proof is rare",
+  "why_now": "Gartner's October 2026 CEO survey just put a hard number on the AI value gap (44% can't demonstrate returns) even as 75% plan to spend more, and the finance-side data from Deloitte shows the same shape.",
+  "topic_candidates": [
+    {
+      "title": "The AI value gap in finance: broad deployment, thin attribution",
+      "why": "Fresh Gartner CEO survey (Oct 2026) plus Deloitte Finance Trends line up on the same gap — number-grounded and central to the CFO agenda.",
+      "source": "https://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-says-44-percent-of-ceos-struggle-to-demonstrate-ai-financial-returns-as-technology-becomes-central-to-growth"
+    },
+    {
+      "title": "SAP opens bidirectional data flows with native Apache Iceberg in Business Data Cloud",
+      "why": "Nov 5 Register report: zero-copy exchange with Databricks/Snowflake/Google/AWS/Microsoft and a Polaris catalog for Joule — a real openness shift for SAP.",
+      "source": "https://www.theregister.com/software/2026/11/05/sap-promises-to-open-out-data-flows-in-both-directions/5307495"
+    },
+    {
+      "title": "Enterprise AI agent governance becomes the week's throughline",
+      "why": "Kihan's 'Constitutional Computing' launch plus Sentra ($150M) and Larridin ($30M) raises signal that control, not capability, is the new bottleneck.",
+      "source": "https://aiagentsdirectory.com/news/ai-agents-news-brief-november-5-2026"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I keep coming back to one number from Gartner this week. In a survey of just over 200 CEOs, 44% said they can't yet demonstrate a financial return on their AI spending — and in the same breath, 75% said they plan to increase technology investment anyway.\n\nI read that pairing a few times before it settled. It would be easy to call it irrational. I don't think it is. What it looks like to me is conviction running ahead of measurement: leaders who believe the capability matters but haven't yet reorganised the work enough for the value to surface in the numbers. Gartner's David Furlonger put it more sharply than I would — the value problem won't be solved by adding more AI to existing ways of working.\n\nThat line is the part I've been chewing on. It's a quiet rebuke of the pilot-everywhere reflex. Deloitte's finance research rhymes with it: roughly 63% of finance teams have deployed AI, but only about a fifth report clear, measurable value. Deployment turns out to be the easy half.\n\nMy guess is the gap closes first for the teams willing to redesign a process end to end rather than bolt an assistant onto each existing step. Though I'd hold that loosely — it's also possible some of the value is real and just hard to attribute. Returns on plumbing always are.\n\nThe Gartner and Deloitte pieces, if useful:\nhttps://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-says-44-percent-of-ceos-struggle-to-demonstrate-ai-financial-returns-as-technology-becomes-central-to-growth\nhttps://www.deloitte.com/us/en/about/press-room/finance-trends-2026-survey-release.html"
+    },
+    {
+      "style": "Analytical",
+      "text": "The headline from Gartner's latest CEO survey is that 44% struggle to demonstrate AI's financial returns. The more telling number sits right next to it: 75% still plan to increase technology investment, and 80% now say technology has become strategy rather than a support function. So the spending isn't slowing because of the measurement gap — it's accelerating through it.\n\nWorth being precise about the sample. This is 203 global CEOs and senior executives, surveyed in spring 2026. Small, senior, self-reported — so I'd treat the exact percentages as directional rather than gospel.\n\nWhat makes it credible to me is that the finance-side data points the same way. Deloitte's Finance Trends work found roughly 63% of finance functions have deployed AI, yet only about 21% report clear, measurable value and just 14% have fully integrated agentic AI. Two different surveys, same shape: broad deployment, thin attribution.\n\nThe part I'd flag is what CEOs themselves say unlocks the value. 63% named radical operating-model redesign, not more tooling. That fits the uncomfortable pattern that ROI shows up when you change how the work is done, not when you add an assistant to each existing step. The risk is obvious too: 'redesign' can become a reason to defer accountability indefinitely.\n\nSources:\nhttps://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-says-44-percent-of-ceos-struggle-to-demonstrate-ai-financial-returns-as-technology-becomes-central-to-growth\nhttps://www.deloitte.com/us/en/about/press-room/finance-trends-2026-survey-release.html"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me was a single pairing in Gartner's CEO survey: 44% can't show a financial return on AI, and 75% are increasing their technology budgets regardless. Those two facts living side by side tell you more than either does alone.\n\nMy first instinct was that this is just hype momentum. But the longer I sat with it, the more it read as something else — leaders trusting a direction they can't yet put on a spreadsheet. 80% of them told Gartner that technology has become strategy, not a cost line. If you genuinely believe that, spending through an unproven ROI period is rational, even if it's uncomfortable.\n\nWhat widens it out for me is the finance data underneath. Deloitte's Finance Trends research found roughly 63% of finance teams have deployed AI and only about a fifth can point to clear value. The capability is nearly everywhere; the proof is rare. And the CEOs' own answer to why — most pointed to redesigning the operating model rather than buying more tools — suggests the bottleneck was never really the technology.\n\nI don't think this resolves quickly. My hunch is 2027 is when the measurement either catches up or the patience runs out. Curious whether others in finance are seeing the value land yet, or still mostly being promised it.\n\nBoth reports are worth a read:\nhttps://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-says-44-percent-of-ceos-struggle-to-demonstrate-ai-financial-returns-as-technology-becomes-central-to-growth\nhttps://www.deloitte.com/us/en/about/press-room/finance-trends-2026-survey-release.html"
+    }
+  ],
+  "sources": [
+    "https://www.gartner.com/en/newsroom/press-releases/2026-10-20-gartner-says-44-percent-of-ceos-struggle-to-demonstrate-ai-financial-returns-as-technology-becomes-central-to-growth",
+    "https://www.deloitte.com/us/en/about/press-room/finance-trends-2026-survey-release.html"
+  ]
+}
