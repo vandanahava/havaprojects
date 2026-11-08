@@ -1,0 +1,42 @@
+{
+  "date": "2026-11-08",
+  "topic": "The finance AI value gap: fully deployed, not yet worth it",
+  "why_now": "Deloitte's Finance Trends 2026 survey of 1,326 finance executives shows 63% have fully deployed AI but only 21% see measurable value, a tension sharpened as CFOs set 2026 priorities this month.",
+  "topic_candidates": [
+    {
+      "title": "Finance AI's value gap: 63% deployed, 21% see value",
+      "why": "Deloitte Finance Trends 2026 pairs high adoption with low realized value and only 14% agent integration — specific, timely, counterintuitive.",
+      "source": "https://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/"
+    },
+    {
+      "title": "SAP expands Joule across every line of business + Autonomous Suite",
+      "why": "At SAP Connect, SAP unveiled an Autonomous Suite with 200+ agents and Joule Work as a new interface — concrete SAP-pillar news.",
+      "source": "https://sapinsider.org/blogs/at-sap-connect-sap-expands-joule-across-every-line-of-business"
+    },
+    {
+      "title": "The CFO hiring shift: only 23% rank deep accounting as top priority",
+      "why": "CFO Connect's 2026 research shows AI is reshaping what finance hires for, moving away from core accounting knowledge.",
+      "source": "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+    }
+  ],
+  "posts": [
+    {
+      "style": "Reflective",
+      "text": "I spent part of this weekend reading Deloitte's Finance Trends 2026 report, and one pairing of numbers has stayed with me. Across 1,326 finance executives at billion-dollar-plus companies, 63% say they've fully deployed AI in the finance function. But only 21% of that group believe the investment has delivered clear, measurable value, and just 14% have actually wired AI agents into how the work gets done.\n\nWhat I keep thinking about is the distance between \"deployed\" and \"worth it.\" It's easy to stand up a tool, give a team access, and tick the box. It's much harder to redesign the process underneath so the tool changes an outcome someone actually cares about. My guess is that a lot of that 63% sits in the first category — live, but not yet load-bearing.\n\nI don't read this as disappointment, though. The same survey has 54% of CFOs naming AI agents as their top transformation priority for 2026, which tells me the intent is real even where the payoff isn't here yet. Early adoption almost always looks like this: a wide, thin layer of deployment, then a slow thickening where a few teams work out what genuinely moves. The gap isn't a verdict on AI. It's just the part of the curve we happen to be standing on.\n\nReading via CFO Dive and Deloitte:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/\nhttps://www.deloitte.com/us/en/about/press-room/deloitte-q4-2025-cfo-signals-survey"
+    },
+    {
+      "style": "Analytical",
+      "text": "The headline from Deloitte's Finance Trends 2026 survey usually gets read as an AI success story: 63% of finance functions have fully deployed AI, and 87% of CFOs expect it to be very or extremely important to operations this year. But the number worth sitting with is the one underneath. Of the 63% who've deployed, only 21% say the investment has delivered clear, measurable value, and just 14% have fully integrated AI agents into the function.\n\nA measured reading is that deployment and value are being counted at different stages of the same process, and the ratio between them is the real signal. If roughly one in five deployments is paying off today, the binding constraint isn't access to AI — it's everything around it. The same survey hints at what: 52% of CFOs name data quality, access and usability as a priority, which is usually the quiet reason a capable model produces unremarkable results.\n\nWhat this actually means, I think, is that 2026 is a plumbing year more than a model year. The frontier isn't a smarter assistant; it's clean, governed data and processes redesigned so an agent has something real to do. The 54% who call agent integration their top priority are, in effect, betting the 21% is a floor and not a ceiling. That seems like the right bet — with the honest caveat that closing the gap is slower and far less glamorous than deploying ever was.\n\nCFO Dive and Deloitte have the detail:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/\nhttps://www.deloitte.com/us/en/about/press-room/deloitte-q4-2025-cfo-signals-survey"
+    },
+    {
+      "style": "Observation",
+      "text": "The detail that stuck with me in Deloitte's Finance Trends 2026 report wasn't the big adoption figure — it was the word \"fully.\" 63% of finance functions have fully deployed AI, the report says, and yet only 21% of them feel it has delivered clear, measurable value. Fully deployed, and mostly not yet worth it. Those two ideas sitting in one sentence tell you a lot about where we actually are.\n\nBecause \"fully deployed\" is a procurement state, not an outcome. It means the licenses are bought, the access is granted, the rollout email went out. It says nothing about whether a close got faster or a forecast got sharper. The report draws the line cleanly: 14% have genuinely integrated AI agents into how finance works, which is a very different thing from having AI merely available.\n\nWiden the lens and this is just the shape of every technology that ends up mattering. Spreadsheets, ERP, the cloud — each had a long stretch where \"we have it\" ran years ahead of \"it changed how we work.\" My read is that finance is squarely in that stretch with AI right now, and the teams that pull ahead won't be the ones who deployed first. They'll be the ones who did the unglamorous work of redesigning the process around the tool. The 54% of CFOs who put agent integration at the top of their 2026 list seem to already sense it.\n\nReported by CFO Dive, drawn from Deloitte's survey:\nhttps://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/\nhttps://www.deloitte.com/us/en/about/press-room/deloitte-q4-2025-cfo-signals-survey"
+    }
+  ],
+  "sources": [
+    "https://www.cfodive.com/news/cfos-face-expanded-mandate-pressures-volatile-2026-deloitte-ai/816558/",
+    "https://www.deloitte.com/us/en/about/press-room/deloitte-q4-2025-cfo-signals-survey",
+    "https://sapinsider.org/blogs/at-sap-connect-sap-expands-joule-across-every-line-of-business",
+    "https://www.cfoconnect.eu/resources/reports/state-of-ai-in-finance-2026-report-findings-and-what-they-mean-for-cfos/"
+  ]
+}
